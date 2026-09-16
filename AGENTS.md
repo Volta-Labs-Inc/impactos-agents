@@ -2,6 +2,10 @@
 
 Canonical agent instructions for this folder. `CLAUDE.md` is a generated pointer here.
 
+## Quick start
+
+Read `context-map.md` at the start of every session (systems of record, reference material, rules). Check `next-steps.md` for the current state and whose court the ball is in. `log.md` holds session history. All three are rendered from the OutworkOS database and are not committed.
+
 ## What this project is
 
 A helper-first starter for incubators and accelerators: a storage-independent data contract (the impactOS data types plus a direct-beneficiary reporting profile), a deterministic command-line tool the agent drives, and harness-portable skills so a non-technical helper can inventory where an organisation's data lives, choose per data type whether it stays in existing systems or moves to an optional store, and produce the funder-accepted spreadsheet every reporting period. Built for organisations other than Volta; not a version of Volta's impactOS, Coach OS, Founder OS or ImpactOS Multi Tenant.
@@ -18,6 +22,10 @@ A helper-first starter for incubators and accelerators: a storage-independent da
 - Source exports, generated reports, interview state and provenance records live outside version control (`workspace/`, `exports/`, `reports/` are ignored). The repository holds mappings, operating notes, the source map, the guidance document and skills only.
 - No funder agreement text in this repository; anchor to the cited public frameworks.
 - Read and maintain `time-tracker.json` when the project's identity, workspace or billing boundary changes. It is local and private and is never committed.
+
+## Time attribution
+
+Read the local/private `time-tracker.json` before changing project identity or attribution rules. Preserve reviewed history and keep its billing identity, boundaries, observed workspaces, lifecycle, and typed matching evidence current when project facts change. Never add secrets, raw transcript text, private message contents, or generic platform domains as strong project evidence. Do not commit the file unless it has been explicitly sanitized and approved.
 
 ## Adversarial review of generated outputs
 

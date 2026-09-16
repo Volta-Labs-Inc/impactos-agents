@@ -22,3 +22,8 @@ Thumbs.db
 *.zip
 *.tar.gz
 *.dmg
+
+# Context map lives in the OutworkOS database; local copy is private
+context-map.md
+next-steps.md
+log.md
