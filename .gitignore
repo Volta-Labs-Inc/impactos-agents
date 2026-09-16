@@ -5,3 +5,20 @@ __pycache__/
 workspace/
 exports/
 reports/
+
+# Local config (private)
+.mcp.json
+time-tracker.json
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Caches
+.cache/
+*.pyc
+
+# Large binaries
+*.zip
+*.tar.gz
+*.dmg
