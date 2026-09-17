@@ -1,0 +1,8 @@
+#!/bin/sh
+# impactOS pre-commit hook (installed by `impactos init`, core.hooksPath).
+# Refuses a commit that stages a secret or personal information.
+ROOT="$(git rev-parse --show-toplevel)"
+if [ -x "$ROOT/bin/impactos" ]; then
+    exec "$ROOT/bin/impactos" check
+fi
+exec python3 "$ROOT/cli/run.py" check

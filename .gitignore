@@ -2,9 +2,14 @@
 .env.*
 node_modules/
 __pycache__/
-workspace/
-exports/
-reports/
+# The workspace tree holds source exports, records, reports, provenance and
+# personal data. Ignore it wholesale; commit only the .gitkeep placeholder.
+workspace/*
+!workspace/.gitkeep
+# Top-level generated output only (anchored): committed golden reports under
+# fixtures/ and the tracked contract exports must not be swallowed.
+/exports/
+/reports/
 # The versioned contract export mappings are tracked (distinct from generated exports/)
 !contract/exports/
 !contract/exports/**

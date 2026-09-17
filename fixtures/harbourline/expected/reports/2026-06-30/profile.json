@@ -1,0 +1,293 @@
+{
+  "fields": [
+    {
+      "anchor": "ISED BAI PMF",
+      "contract_path": "company.legal_name",
+      "count": 7,
+      "key": "legal_name",
+      "label": "Company legal name",
+      "status": "populated"
+    },
+    {
+      "anchor": "ISED BAI PMF",
+      "contract_path": "company.business_number",
+      "count": 0,
+      "key": "business_number",
+      "label": "CRA business number",
+      "reason": "no source column maps a CRA business number",
+      "status": "gap"
+    },
+    {
+      "anchor": "ISED BAI PMF",
+      "contract_path": "company.year_incorporated",
+      "count": 0,
+      "key": "year_incorporated",
+      "label": "Year incorporated",
+      "reason": "no source column maps year incorporated",
+      "status": "gap"
+    },
+    {
+      "anchor": "ISED BAI PMF",
+      "contract_path": "company.year_of_first_sale",
+      "count": 0,
+      "key": "year_of_first_sale",
+      "label": "Year of first sale",
+      "reason": "no source column maps year of first sale",
+      "status": "gap"
+    },
+    {
+      "anchor": "ISED BAI PMF",
+      "contract_path": "company.industry",
+      "count": 0,
+      "key": "industry",
+      "label": "Industry / vertical",
+      "reason": "no source column maps industry",
+      "status": "gap"
+    },
+    {
+      "anchor": "BAI Template v5",
+      "contract_path": "company.company_type",
+      "count": 0,
+      "key": "company_type",
+      "label": "Company type",
+      "reason": "company type is never inferred and no source column declares it",
+      "status": "gap"
+    },
+    {
+      "anchor": "ISED BAI PMF",
+      "contract_path": "milestone_position.rung_order",
+      "count": 7,
+      "key": "company_stage",
+      "label": "Stage of growth",
+      "status": "populated"
+    },
+    {
+      "anchor": "ISED BAI PMF",
+      "contract_path": "person.demographics",
+      "count": 6,
+      "key": "founder_demographics",
+      "label": "Founder counts by demographic",
+      "status": "populated"
+    },
+    {
+      "anchor": "PacifiCan glossary",
+      "contract_path": "person.demographics",
+      "count": 6,
+      "key": "diverse_groups",
+      "label": "Diverse-group membership",
+      "status": "populated"
+    },
+    {
+      "anchor": "ISED BAI PMF",
+      "contract_path": "company_update.ft_employees_canada",
+      "count": 0,
+      "key": "employees_ft_canada",
+      "label": "Full-time employees in Canada",
+      "reason": "no source column maps full-time Canadian employees",
+      "status": "gap"
+    },
+    {
+      "anchor": "ISED BAI PMF",
+      "contract_path": "company_update.pt_employees_canada",
+      "count": 0,
+      "key": "employees_pt_canada",
+      "label": "Part-time employees in Canada",
+      "reason": "no source column maps part-time Canadian employees",
+      "status": "gap"
+    },
+    {
+      "anchor": "ISED BAI PMF",
+      "contract_path": "company_update.employees_outside_canada",
+      "count": 0,
+      "key": "employees_outside_canada",
+      "label": "Employees outside Canada",
+      "reason": "no source column maps employees outside Canada",
+      "status": "gap"
+    },
+    {
+      "anchor": "ISED BAI PMF",
+      "contract_path": "company_update.annual_revenue",
+      "count": 0,
+      "key": "annual_revenue",
+      "label": "Annual revenue",
+      "reason": "no source column maps annual revenue",
+      "status": "gap"
+    },
+    {
+      "anchor": "ISED BAI PMF",
+      "contract_path": "company_update.export_revenue",
+      "count": 0,
+      "key": "export_revenue",
+      "label": "Export revenue",
+      "reason": "no source column maps export revenue",
+      "status": "gap"
+    },
+    {
+      "anchor": "BAI Template v5",
+      "contract_path": "company_update.revenue_disclosure",
+      "count": 0,
+      "key": "revenue_disclosure",
+      "label": "Revenue disclosure",
+      "reason": "no source column maps a revenue disclosure flag",
+      "status": "gap"
+    },
+    {
+      "anchor": "ISED BAI PMF",
+      "contract_path": "funding_event.amount",
+      "count": 0,
+      "key": "financing_by_source",
+      "label": "Financing by source",
+      "reason": "no funding events mapped (funding is reviewed, never inferred)",
+      "status": "gap"
+    },
+    {
+      "anchor": "ISED BAI PMF",
+      "contract_path": "company_update.patents_applied",
+      "count": 0,
+      "key": "patents_applied",
+      "label": "Patents applied",
+      "reason": "no source column maps patents applied",
+      "status": "gap"
+    },
+    {
+      "anchor": "ISED BAI PMF",
+      "contract_path": "company_update.patents_granted",
+      "count": 0,
+      "key": "patents_granted",
+      "label": "Patents granted",
+      "reason": "no source column maps patents granted",
+      "status": "gap"
+    },
+    {
+      "anchor": "ISED BAI PMF",
+      "contract_path": "company_update.nps",
+      "count": 0,
+      "key": "nps",
+      "label": "Net promoter score",
+      "reason": "no source column maps NPS",
+      "status": "gap"
+    },
+    {
+      "anchor": "ISED BAI PMF",
+      "contract_path": "company_update.impact_rating",
+      "count": 0,
+      "key": "impact_rating",
+      "label": "Impact rating",
+      "reason": "no source column maps an impact rating",
+      "status": "gap"
+    },
+    {
+      "anchor": "BAI Template v5",
+      "contract_path": "membership.cohort_ref",
+      "count": 3,
+      "key": "support_programs_attended",
+      "label": "Support programs attended",
+      "status": "populated"
+    },
+    {
+      "anchor": "CED 2024-2028",
+      "contract_path": "derived:count(company with a membership)",
+      "count": 3,
+      "key": "businesses_assisted",
+      "label": "Businesses assisted",
+      "status": "populated"
+    },
+    {
+      "anchor": "CED 2024-2028",
+      "contract_path": "interaction.duration_hours",
+      "count": 0,
+      "key": "coaching_hours_per_business",
+      "label": "Average coaching/mentoring hours per business",
+      "reason": "no coaching interactions with duration mapped",
+      "status": "gap"
+    },
+    {
+      "anchor": "CED 2024-2028",
+      "contract_path": "company_update.current_ftes",
+      "count": 7,
+      "key": "jobs_created",
+      "label": "Jobs created",
+      "status": "populated"
+    },
+    {
+      "anchor": "PacifiCan glossary",
+      "contract_path": "team_member_period.is_active",
+      "count": 0,
+      "key": "jobs_maintained",
+      "label": "Jobs maintained",
+      "reason": "no team-member-period roster mapped",
+      "status": "gap"
+    },
+    {
+      "anchor": "CED 2024-2028",
+      "contract_path": "company_update.lifetime_revenue",
+      "count": 0,
+      "key": "total_sales",
+      "label": "Total sales",
+      "reason": "no source column maps lifetime revenue",
+      "status": "gap"
+    },
+    {
+      "anchor": "CED 2024-2028",
+      "contract_path": "funding_event.amount",
+      "count": 0,
+      "key": "total_funding_received",
+      "label": "Total funding received",
+      "reason": "no funding events mapped (funding is reviewed, never inferred)",
+      "status": "gap"
+    },
+    {
+      "anchor": "CED 2024-2028",
+      "contract_path": "derived:total_funding_received / businesses_assisted",
+      "count": 0,
+      "key": "avg_funding_received",
+      "label": "Average funding received",
+      "reason": "no funding events mapped (funding is reviewed, never inferred)",
+      "status": "gap"
+    },
+    {
+      "anchor": "CED 2024-2028",
+      "contract_path": "derived:active companies over time",
+      "count": 0,
+      "key": "survival_rate",
+      "label": "Survival rate",
+      "reason": "requires multi-period comparison (out of scope for a single export)",
+      "status": "gap"
+    }
+  ],
+  "gaps": [
+    "business_number",
+    "year_incorporated",
+    "year_of_first_sale",
+    "industry",
+    "company_type",
+    "employees_ft_canada",
+    "employees_pt_canada",
+    "employees_outside_canada",
+    "annual_revenue",
+    "export_revenue",
+    "revenue_disclosure",
+    "financing_by_source",
+    "patents_applied",
+    "patents_granted",
+    "nps",
+    "impact_rating",
+    "coaching_hours_per_business",
+    "jobs_maintained",
+    "total_sales",
+    "total_funding_received",
+    "avg_funding_received",
+    "survival_rate"
+  ],
+  "period": "2026-06-30",
+  "populated": [
+    "legal_name",
+    "company_stage",
+    "founder_demographics",
+    "diverse_groups",
+    "support_programs_attended",
+    "businesses_assisted",
+    "jobs_created"
+  ],
+  "profile_name": "Direct-beneficiary reporting profile"
+}
