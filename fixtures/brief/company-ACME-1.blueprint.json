@@ -1,0 +1,276 @@
+[
+  {
+    "createSurface": {
+      "catalogId": "https://a2ui.local/catalogs/shadcn/v1.json",
+      "sendDataModel": false,
+      "surfaceId": "brief"
+    },
+    "version": "v0.9.1"
+  },
+  {
+    "updateComponents": {
+      "components": [
+        {
+          "children": [
+            "heading",
+            "subtitle",
+            "profile-card",
+            "track-card",
+            "interactions-card",
+            "flags-card"
+          ],
+          "component": "Column",
+          "id": "root"
+        },
+        {
+          "component": "Text",
+          "id": "heading",
+          "text": {
+            "path": "/company/name"
+          },
+          "variant": "h1"
+        },
+        {
+          "component": "Text",
+          "id": "subtitle",
+          "text": {
+            "path": "/company/subtitle"
+          },
+          "variant": "muted"
+        },
+        {
+          "child": "profile-body",
+          "component": "Card",
+          "id": "profile-card"
+        },
+        {
+          "children": [
+            "profile-title",
+            "profile-table"
+          ],
+          "component": "Column",
+          "id": "profile-body"
+        },
+        {
+          "component": "Text",
+          "id": "profile-title",
+          "text": "Profile",
+          "variant": "h2"
+        },
+        {
+          "columns": [
+            {
+              "key": "field",
+              "label": "Field"
+            },
+            {
+              "key": "value",
+              "label": "Value"
+            }
+          ],
+          "component": "Table",
+          "id": "profile-table",
+          "rows": {
+            "path": "/profile"
+          }
+        },
+        {
+          "child": "track-body",
+          "component": "Card",
+          "id": "track-card"
+        },
+        {
+          "children": [
+            "track-title",
+            "track-position",
+            "track-target"
+          ],
+          "component": "Column",
+          "id": "track-body"
+        },
+        {
+          "component": "Text",
+          "id": "track-title",
+          "text": "Track position and target",
+          "variant": "h2"
+        },
+        {
+          "component": "Text",
+          "id": "track-position",
+          "text": {
+            "path": "/track/position"
+          },
+          "variant": "body"
+        },
+        {
+          "component": "Text",
+          "id": "track-target",
+          "text": {
+            "path": "/track/target"
+          },
+          "variant": "body"
+        },
+        {
+          "child": "interactions-body",
+          "component": "Card",
+          "id": "interactions-card"
+        },
+        {
+          "children": [
+            "interactions-title",
+            "interactions-table"
+          ],
+          "component": "Column",
+          "id": "interactions-body"
+        },
+        {
+          "component": "Text",
+          "id": "interactions-title",
+          "text": "Last three interactions",
+          "variant": "h2"
+        },
+        {
+          "child": "flags-body",
+          "component": "Card",
+          "id": "flags-card"
+        },
+        {
+          "children": [
+            "flags-title",
+            "flags-table"
+          ],
+          "component": "Column",
+          "id": "flags-body"
+        },
+        {
+          "component": "Text",
+          "id": "flags-title",
+          "text": "Open flags",
+          "variant": "h2"
+        },
+        {
+          "columns": [
+            {
+              "key": "date",
+              "label": "Date"
+            },
+            {
+              "key": "type",
+              "label": "Type"
+            },
+            {
+              "key": "subject",
+              "label": "Subject"
+            }
+          ],
+          "component": "Table",
+          "id": "interactions-table",
+          "rows": {
+            "path": "/interactions"
+          }
+        },
+        {
+          "columns": [
+            {
+              "key": "flag",
+              "label": "Flag"
+            },
+            {
+              "key": "detail",
+              "label": "Detail"
+            }
+          ],
+          "component": "Table",
+          "id": "flags-table",
+          "rows": {
+            "path": "/flags"
+          }
+        }
+      ],
+      "surfaceId": "brief"
+    },
+    "version": "v0.9.1"
+  },
+  {
+    "updateDataModel": {
+      "path": "/",
+      "surfaceId": "brief",
+      "value": {
+        "company": {
+          "name": "Aurora Robotics",
+          "subtitle": "Company brief · period 2026-06-30 · aurora-crm"
+        },
+        "flags": [
+          {
+            "detail": "employees: 'twelve' is not a number; left unset",
+            "flag": "unparseable_value"
+          },
+          {
+            "detail": "a demographic hint was present but no source column declares demographics; demographics left unset",
+            "flag": "never_inferred_demographic"
+          }
+        ],
+        "interactions": [
+          {
+            "date": "2026-06-01",
+            "subject": "Q2 progress review",
+            "type": "meeting"
+          },
+          {
+            "date": "2026-05-15",
+            "subject": "Introduction to the growth grant",
+            "type": "email"
+          },
+          {
+            "date": "2026-04-20",
+            "subject": "Hiring plan check-in",
+            "type": "call"
+          }
+        ],
+        "profile": [
+          {
+            "field": "Legal name",
+            "value": "Aurora Robotics Inc."
+          },
+          {
+            "field": "Operating name",
+            "value": "Aurora Robotics"
+          },
+          {
+            "field": "Industry",
+            "value": "Advanced manufacturing"
+          },
+          {
+            "field": "City",
+            "value": "Halifax"
+          },
+          {
+            "field": "Province",
+            "value": "NS"
+          },
+          {
+            "field": "Country",
+            "value": "Canada"
+          },
+          {
+            "field": "Website",
+            "value": "https://aurora.example.org"
+          },
+          {
+            "field": "Source system",
+            "value": "aurora-crm"
+          },
+          {
+            "field": "Source id",
+            "value": "ACME-1"
+          }
+        ],
+        "track": {
+          "position": "Software track: First Paying Customer (rung 3 of 6) · funder stage Early Adopters, as of 2026-06-30",
+          "target": "Early Product-Market Fit (rung 5 of 6) — Repeatable sales motion with three reference customers."
+        }
+      }
+    },
+    "version": "v0.9.1"
+  }
+]

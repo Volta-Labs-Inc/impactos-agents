@@ -53,6 +53,7 @@ def run(command: str, **kwargs):
         "export": cli.cmd_export,
         "check": cli.cmd_check,
         "state": cli.cmd_state,
+        "brief": cli.cmd_brief,
     }[command]
     return func(ns(**kwargs))
 
