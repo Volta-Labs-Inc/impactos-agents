@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from . import parsers, paths, workspace
+from . import interview, parsers, paths, workspace
 from . import __version__
 from .check import run_check
 from .mapping import MappingError, apply_mapping, load_mapping
@@ -201,6 +201,73 @@ def cmd_export(args) -> Result:
     return result
 
 
+def _default_questions_path() -> Path:
+    return paths.REPO_ROOT / "skills" / "onboarding" / "questions.json"
+
+
+def cmd_interview(args) -> Result:
+    """Deterministic bookkeeping for the onboarding interview (SR-02, SR-05)."""
+    result = Result("interview")
+    state_path = paths.workspace_dir(args.project_root) / "state" / "interview.json"
+
+    if args.action == "route":
+        source_map_path = Path(args.source_map) if args.source_map else args.project_root / "source-map.json"
+        if not source_map_path.exists():
+            result.add_error(f"source map not found: {source_map_path}")
+            return result
+        source_map = json.loads(source_map_path.read_text(encoding="utf-8"))
+        rows = interview.routes_from_source_map(source_map)
+        record = {"source_map": str(source_map_path), "generated_at": datetime.datetime.now(datetime.timezone.utc).isoformat(), "routes": rows}
+        _write_json(paths.workspace_dir(args.project_root) / "state" / "route.json", record)
+        result.data = {"routes": rows, "route_path": str(paths.workspace_dir(args.project_root) / "state" / "route.json")}
+        for row in rows:
+            if not row["matches_recommendation"]:
+                result.add_warning(
+                    f"{row['data_type']}: chosen route {row['chosen_route']!r} differs from recommendation {row['recommendation']!r}"
+                )
+        result.summary = "Route recommendations: " + ", ".join(f"{r['data_type']}={r['recommendation']}" for r in rows)
+        return result
+
+    if args.action == "reset":
+        if state_path.exists():
+            state_path.unlink()
+        result.data = {"reset": True, "state_path": str(state_path)}
+        result.summary = "Interview state cleared."
+        return result
+
+    questions_path = Path(args.questions) if args.questions else _default_questions_path()
+    if not questions_path.exists():
+        result.add_error(f"questions file not found: {questions_path}")
+        return result
+    try:
+        questions = interview.load_questions(questions_path)
+        state = interview.load_state(state_path)
+        if args.action == "answer":
+            if not args.id:
+                result.add_error("answer requires --id")
+                return result
+            interview.record_answer(state, args.id, args.value, questions)
+            interview.save_state(state_path, state)
+    except interview.InterviewError as exc:
+        result.add_error(str(exc))
+        return result
+
+    nxt = interview.next_question(questions, state)
+    result.data = {
+        "action": args.action,
+        "next_question": nxt,
+        "answered": interview.answered_ids(questions, state),
+        "remaining": interview.remaining_ids(questions, state),
+        "complete": nxt is None,
+        "state_path": str(state_path),
+    }
+    if nxt is None:
+        result.summary = f"Interview complete: {len(questions)} questions answered."
+    else:
+        result.summary = f"Next question ({nxt['id']}): {nxt.get('prompt', '')}"
+    return result
+
+
 # --------------------------------------------------------------------------- #
 # Parser
 # --------------------------------------------------------------------------- #
@@ -256,6 +323,16 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("state", help="print a JSON workspace summary for skills")
     add_common(p)
     p.set_defaults(func=cmd_state)
+
+    p = sub.add_parser("interview", help="onboarding interview bookkeeping: next/answer/status/route/reset")
+    p.add_argument("--action", choices=["next", "answer", "status", "route", "reset"], default="next",
+                   help="next unanswered question (default), record an answer, status, route rule, or reset")
+    p.add_argument("--id", help="question id (for --action answer)")
+    p.add_argument("--value", help="answer value (for --action answer)")
+    p.add_argument("--questions", help="path to questions.json (default: skills/onboarding/questions.json)")
+    p.add_argument("--source-map", dest="source_map", help="path to source-map.json (for --action route)")
+    add_common(p)
+    p.set_defaults(func=cmd_interview)
 
     return parser
 

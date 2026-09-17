@@ -1,0 +1,135 @@
+{
+  "interview_version": "1.0.0",
+  "notes": "Ordered onboarding questions. Data, not prompts: an organisation can add, remove or reorder questions here without editing any skill. The onboarding skill asks the next unanswered question (impactos interview --action next) one per turn, reads any file the helper points at before asking (read-before-ask), and records the answer (impactos interview --action answer). 'reads_from' lists what to parse or read first; 'records_to' is where the confirmed answer is written.",
+  "questions": [
+    {
+      "id": "org_name",
+      "section": "Inventory",
+      "prompt": "What is the organisation's name?",
+      "why": "Names the deployment in the operating notes and source map.",
+      "kind": "text",
+      "required": true,
+      "records_to": "operating-notes/organisation.md"
+    },
+    {
+      "id": "reporting_period",
+      "section": "Inventory",
+      "prompt": "Which reporting period are we preparing (for example 2026-06-30)?",
+      "why": "The period label every parse, mapping and export is scoped to.",
+      "kind": "text",
+      "required": true,
+      "records_to": "operating-notes/organisation.md"
+    },
+    {
+      "id": "funder_anchor",
+      "section": "Inventory",
+      "prompt": "Which public funder framework are you reporting toward (for example CED 2024-2028)? This is an anchor only; no agreement text is stored.",
+      "why": "Records the cited framework the export helps satisfy; see docs/reporting-anchors.md.",
+      "kind": "text",
+      "required": false,
+      "records_to": "operating-notes/organisation.md"
+    },
+    {
+      "id": "data_inventory",
+      "section": "Inventory",
+      "prompt": "Point me at one export from each system where the organisation keeps its data (companies/beneficiaries, programs and cohorts, funding, meetings). I will read each file and show you what I found before asking anything else.",
+      "why": "Read-before-ask: parse each pointed-at file so later questions are confirmations, not blind asks.",
+      "kind": "files",
+      "required": true,
+      "reads_from": ["pointed-at export files (impactos parse --source <file>)"],
+      "records_to": "source-map.json"
+    },
+    {
+      "id": "company_source",
+      "section": "Source map",
+      "prompt": "Confirm where company/beneficiary records live and how they are exported (system name and export method).",
+      "why": "SR-04: the source map states location and export method per data type.",
+      "kind": "source",
+      "required": true,
+      "data_type": "company",
+      "reads_from": ["the parsed companies export"],
+      "records_to": "source-map.json"
+    },
+    {
+      "id": "company_owner",
+      "section": "Source map",
+      "prompt": "Who owns the company data source? Give a name or a role only, never contact details.",
+      "why": "SR-04: owner recorded by name or role; the PII scan rejects contact details.",
+      "kind": "text",
+      "required": true,
+      "data_type": "company",
+      "records_to": "source-map.json"
+    },
+    {
+      "id": "company_identifier",
+      "section": "Source map",
+      "prompt": "Which column in the company export is the stable identifier that stays the same across periods? If there is none, say so.",
+      "why": "SR-05: a source with no stable identifier is a missing required field and changes the route.",
+      "kind": "choice",
+      "required": true,
+      "data_type": "company",
+      "records_to": "source-map.json"
+    },
+    {
+      "id": "interactions_source",
+      "section": "Source map",
+      "prompt": "Where do coaching meetings and interactions live, and which notetaker exports them (Fireflies, Granola, Fathom)?",
+      "why": "SR-04 / D-14: interactions have no home system; they route to the store.",
+      "kind": "source",
+      "required": false,
+      "data_type": "interaction",
+      "reads_from": ["a sample transcript export (impactos parse --type transcript)"],
+      "records_to": "source-map.json"
+    },
+    {
+      "id": "programs_source",
+      "section": "Source map",
+      "prompt": "Where do programs and cohorts live, and how are they exported?",
+      "why": "SR-04: programs/cohorts are reference data with their own source.",
+      "kind": "source",
+      "required": false,
+      "data_type": "program",
+      "reads_from": ["the parsed programs export"],
+      "records_to": "source-map.json"
+    },
+    {
+      "id": "funding_source",
+      "section": "Source map",
+      "prompt": "Where do funding events live? Does that source keep the full dated history with a stable identifier and declared amounts?",
+      "why": "SR-05: funding is a conditional route; the answer decides stay vs store.",
+      "kind": "source",
+      "required": false,
+      "data_type": "funding_event",
+      "records_to": "source-map.json"
+    },
+    {
+      "id": "demographics_location",
+      "section": "Source map",
+      "prompt": "Where are diverse-group / demographic flags recorded, if at all? We record only where they live; we never infer them from names, free text, or anything else.",
+      "why": "Standing rule: never infer demographics. The source map states where such data lives, not the values.",
+      "kind": "text",
+      "required": false,
+      "data_type": "person",
+      "records_to": "source-map.json"
+    },
+    {
+      "id": "default_track",
+      "section": "Inventory",
+      "prompt": "Which milestone track applies by default (software, hardware, medical-device, biotech)? This is an author-declared deployment constant, never inferred.",
+      "why": "Seeds workspace/state/reference.json so mappings can convert funder stages to rungs.",
+      "kind": "choice",
+      "required": true,
+      "records_to": "workspace/state/reference.json"
+    },
+    {
+      "id": "route_choice",
+      "section": "Routing",
+      "prompt": "Review the route recommendation per data type (impactos interview --action route) and choose, for each, whether it stays in its existing system or moves to the optional store.",
+      "why": "SR-05: the recommendation follows the fixed rule; the person's choice is recorded in operating-notes/routes.md.",
+      "kind": "route",
+      "required": true,
+      "reads_from": ["source-map.json", "impactos interview --action route"],
+      "records_to": "operating-notes/routes.md"
+    }
+  ]
+}
