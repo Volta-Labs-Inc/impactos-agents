@@ -1,0 +1,41 @@
+{
+  "mapping_version": "1.0.0",
+  "source": "harbourline-programs",
+  "source_type": "export",
+  "never_infer_note": "Program, cohort and membership facts are copied only from the declared columns below. No demographic, company-type or funding value is set here; none is inferred.",
+  "data_types": {
+    "program": {
+      "sheet": "Programs",
+      "identity": "Program ID",
+      "constants": { "source_system": "harbourline-programs" },
+      "columns": {
+        "Program Name": { "field": "name", "transform": "copy" },
+        "Program Type": { "field": "program_type", "transform": "copy" },
+        "Start Date": { "field": "start_date", "transform": "date" },
+        "End Date": { "field": "end_date", "transform": "date" },
+        "Status": { "field": "status", "transform": "copy" }
+      }
+    },
+    "cohort": {
+      "sheet": "Cohorts",
+      "identity": "Cohort ID",
+      "constants": { "source_system": "harbourline-programs" },
+      "columns": {
+        "Program ID": { "field": "program_ref", "transform": "copy" },
+        "Cohort Name": { "field": "cohort_name", "transform": "copy" },
+        "Start Date": { "field": "start_date", "transform": "date" },
+        "End Date": { "field": "end_date", "transform": "date" }
+      }
+    },
+    "membership": {
+      "sheet": "Cohorts",
+      "identity": "Cohort ID",
+      "constants": { "source_system": "harbourline-programs" },
+      "columns": {
+        "Cohort ID": { "field": "cohort_ref", "transform": "copy" },
+        "Company ID": { "field": "company_ref", "transform": "copy" },
+        "Company Status": { "field": "status", "transform": "copy" }
+      }
+    }
+  }
+}

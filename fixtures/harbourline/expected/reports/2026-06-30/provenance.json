@@ -1,0 +1,2229 @@
+{
+  "cell_count": 185,
+  "cells": {
+    "Companies!A2": {
+      "column": "record_id",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "source_id",
+      "row_identity": "HL-001",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-001"
+    },
+    "Companies!A3": {
+      "column": "record_id",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "source_id",
+      "row_identity": "HL-002",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-002"
+    },
+    "Companies!A4": {
+      "column": "record_id",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "source_id",
+      "row_identity": "HL-003",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-003"
+    },
+    "Companies!A5": {
+      "column": "record_id",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "source_id",
+      "row_identity": "HL-004",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-004"
+    },
+    "Companies!A6": {
+      "column": "record_id",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "source_id",
+      "row_identity": "HL-005",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-005"
+    },
+    "Companies!A7": {
+      "column": "record_id",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "source_id",
+      "row_identity": "HL-007",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-007"
+    },
+    "Companies!A8": {
+      "column": "record_id",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "source_id",
+      "row_identity": "HL-008",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-008"
+    },
+    "Companies!B2": {
+      "column": "company_name",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "legal_name",
+      "row_identity": "HL-001",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Tidewater Robotics"
+    },
+    "Companies!B3": {
+      "column": "company_name",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "legal_name",
+      "row_identity": "HL-002",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Beacon Health Systems"
+    },
+    "Companies!B4": {
+      "column": "company_name",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "legal_name",
+      "row_identity": "HL-003",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Saltmarsh Analytics"
+    },
+    "Companies!B5": {
+      "column": "company_name",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "legal_name",
+      "row_identity": "HL-004",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Nectar Foodworks"
+    },
+    "Companies!B6": {
+      "column": "company_name",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "legal_name",
+      "row_identity": "HL-005",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Kelp Bioscience"
+    },
+    "Companies!B7": {
+      "column": "company_name",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "legal_name",
+      "row_identity": "HL-007",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Harbour Freight Labs"
+    },
+    "Companies!B8": {
+      "column": "company_name",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "legal_name",
+      "row_identity": "HL-008",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Tidewater Robotics"
+    },
+    "Companies!E2": {
+      "contributors": [
+        {
+          "column": "contact_first_name",
+          "data_type": "person",
+          "field": "first_name",
+          "row_identity": "ava.nguyen@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        },
+        {
+          "column": "contact_last_name",
+          "data_type": "person",
+          "field": "last_name",
+          "row_identity": "ava.nguyen@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "primary contact name joined from first and last name",
+      "exported_at": "2026-06-30",
+      "value": "Ava Nguyen"
+    },
+    "Companies!E3": {
+      "contributors": [
+        {
+          "column": "contact_first_name",
+          "data_type": "person",
+          "field": "first_name",
+          "row_identity": "liam.okafor@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        },
+        {
+          "column": "contact_last_name",
+          "data_type": "person",
+          "field": "last_name",
+          "row_identity": "liam.okafor@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "primary contact name joined from first and last name",
+      "exported_at": "2026-06-30",
+      "value": "Liam Okafor"
+    },
+    "Companies!E4": {
+      "contributors": [
+        {
+          "column": "contact_first_name",
+          "data_type": "person",
+          "field": "first_name",
+          "row_identity": "priya.sharma@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        },
+        {
+          "column": "contact_last_name",
+          "data_type": "person",
+          "field": "last_name",
+          "row_identity": "priya.sharma@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "primary contact name joined from first and last name",
+      "exported_at": "2026-06-30",
+      "value": "Priya Sharma"
+    },
+    "Companies!E5": {
+      "contributors": [
+        {
+          "column": "contact_first_name",
+          "data_type": "person",
+          "field": "first_name",
+          "row_identity": "diego.alvarez@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        },
+        {
+          "column": "contact_last_name",
+          "data_type": "person",
+          "field": "last_name",
+          "row_identity": "diego.alvarez@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "primary contact name joined from first and last name",
+      "exported_at": "2026-06-30",
+      "value": "Diego Alvarez"
+    },
+    "Companies!E6": {
+      "contributors": [
+        {
+          "column": "contact_first_name",
+          "data_type": "person",
+          "field": "first_name",
+          "row_identity": "mei.tanaka@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        },
+        {
+          "column": "contact_last_name",
+          "data_type": "person",
+          "field": "last_name",
+          "row_identity": "mei.tanaka@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "primary contact name joined from first and last name",
+      "exported_at": "2026-06-30",
+      "value": "Mei Tanaka"
+    },
+    "Companies!E7": {
+      "contributors": [
+        {
+          "column": "contact_first_name",
+          "data_type": "person",
+          "field": "first_name",
+          "row_identity": "sofia.martins@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        },
+        {
+          "column": "contact_last_name",
+          "data_type": "person",
+          "field": "last_name",
+          "row_identity": "sofia.martins@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "primary contact name joined from first and last name",
+      "exported_at": "2026-06-30",
+      "value": "Sofia Martins"
+    },
+    "Companies!E8": {
+      "contributors": [
+        {
+          "column": "contact_first_name",
+          "data_type": "person",
+          "field": "first_name",
+          "row_identity": "omar.haddad@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        },
+        {
+          "column": "contact_last_name",
+          "data_type": "person",
+          "field": "last_name",
+          "row_identity": "omar.haddad@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "primary contact name joined from first and last name",
+      "exported_at": "2026-06-30",
+      "value": "Omar Haddad"
+    },
+    "Companies!G2": {
+      "column": "city",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "city",
+      "row_identity": "HL-001",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Halifax"
+    },
+    "Companies!G3": {
+      "column": "city",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "city",
+      "row_identity": "HL-002",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Moncton"
+    },
+    "Companies!G4": {
+      "column": "city",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "city",
+      "row_identity": "HL-003",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Charlottetown"
+    },
+    "Companies!G5": {
+      "column": "city",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "city",
+      "row_identity": "HL-004",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "St. John's"
+    },
+    "Companies!G6": {
+      "column": "city",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "city",
+      "row_identity": "HL-005",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Halifax"
+    },
+    "Companies!G7": {
+      "column": "city",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "city",
+      "row_identity": "HL-007",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Sydney"
+    },
+    "Companies!G8": {
+      "column": "city",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "city",
+      "row_identity": "HL-008",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Dartmouth"
+    },
+    "Companies!H2": {
+      "column": "province",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "province",
+      "row_identity": "HL-001",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "NS"
+    },
+    "Companies!H3": {
+      "column": "province",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "province",
+      "row_identity": "HL-002",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "NB"
+    },
+    "Companies!H4": {
+      "column": "province",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "province",
+      "row_identity": "HL-003",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "PE"
+    },
+    "Companies!H5": {
+      "column": "province",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "province",
+      "row_identity": "HL-004",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "NL"
+    },
+    "Companies!H6": {
+      "column": "province",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "province",
+      "row_identity": "HL-005",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "NS"
+    },
+    "Companies!H7": {
+      "column": "province",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "province",
+      "row_identity": "HL-007",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "NS"
+    },
+    "Companies!H8": {
+      "column": "province",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "province",
+      "row_identity": "HL-008",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "NS"
+    },
+    "Companies!J2": {
+      "column": "contact_email",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "email",
+      "row_identity": "ava.nguyen@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "ava.nguyen@example.org"
+    },
+    "Companies!J3": {
+      "column": "contact_email",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "email",
+      "row_identity": "liam.okafor@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "liam.okafor@example.org"
+    },
+    "Companies!J4": {
+      "column": "contact_email",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "email",
+      "row_identity": "priya.sharma@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "priya.sharma@example.org"
+    },
+    "Companies!J5": {
+      "column": "contact_email",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "email",
+      "row_identity": "diego.alvarez@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "diego.alvarez@example.org"
+    },
+    "Companies!J6": {
+      "column": "contact_email",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "email",
+      "row_identity": "mei.tanaka@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "mei.tanaka@example.org"
+    },
+    "Companies!J7": {
+      "column": "contact_email",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "email",
+      "row_identity": "sofia.martins@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "sofia.martins@example.org"
+    },
+    "Companies!J8": {
+      "column": "contact_email",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "email",
+      "row_identity": "omar.haddad@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "omar.haddad@example.org"
+    },
+    "Companies!M2": {
+      "contributors": [
+        {
+          "column": "dg_2slgbtq,dg_immigrants,dg_indigenous,dg_official_language_minority,dg_persons_with_disabilities,dg_racialized,dg_women,dg_youth",
+          "data_type": "person",
+          "field": "demographics",
+          "row_identity": "ava.nguyen@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "at least one person reports a diverse-group membership",
+      "exported_at": "2026-06-30",
+      "value": "Yes"
+    },
+    "Companies!M3": {
+      "contributors": [
+        {
+          "column": "dg_2slgbtq,dg_immigrants,dg_indigenous,dg_official_language_minority,dg_persons_with_disabilities,dg_racialized,dg_women,dg_youth",
+          "data_type": "person",
+          "field": "demographics",
+          "row_identity": "liam.okafor@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "at least one person reports a diverse-group membership",
+      "exported_at": "2026-06-30",
+      "value": "Yes"
+    },
+    "Companies!M4": {
+      "contributors": [
+        {
+          "column": "dg_2slgbtq,dg_immigrants,dg_indigenous,dg_official_language_minority,dg_persons_with_disabilities,dg_racialized,dg_women,dg_youth",
+          "data_type": "person",
+          "field": "demographics",
+          "row_identity": "priya.sharma@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "at least one person reports a diverse-group membership",
+      "exported_at": "2026-06-30",
+      "value": "Yes"
+    },
+    "Companies!M5": {
+      "contributors": [
+        {
+          "column": "dg_2slgbtq,dg_immigrants,dg_indigenous,dg_official_language_minority,dg_persons_with_disabilities,dg_racialized,dg_women,dg_youth",
+          "data_type": "person",
+          "field": "demographics",
+          "row_identity": "diego.alvarez@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "at least one person reports a diverse-group membership",
+      "exported_at": "2026-06-30",
+      "value": "Yes"
+    },
+    "Companies!M6": {
+      "contributors": [
+        {
+          "column": "dg_2slgbtq,dg_immigrants,dg_indigenous,dg_official_language_minority,dg_persons_with_disabilities,dg_racialized,dg_women,dg_youth",
+          "data_type": "person",
+          "field": "demographics",
+          "row_identity": "mei.tanaka@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "at least one person reports a diverse-group membership",
+      "exported_at": "2026-06-30",
+      "value": "Yes"
+    },
+    "Companies!M7": {
+      "contributors": [
+        {
+          "column": "dg_2slgbtq,dg_immigrants,dg_indigenous,dg_official_language_minority,dg_persons_with_disabilities,dg_racialized,dg_women,dg_youth",
+          "data_type": "person",
+          "field": "demographics",
+          "row_identity": "sofia.martins@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "at least one person reports a diverse-group membership",
+      "exported_at": "2026-06-30",
+      "value": "Yes"
+    },
+    "Companies!P5": {
+      "contributors": [
+        {
+          "column": "dg_2slgbtq,dg_immigrants,dg_indigenous,dg_official_language_minority,dg_persons_with_disabilities,dg_racialized,dg_women,dg_youth",
+          "data_type": "person",
+          "field": "demographics",
+          "row_identity": "diego.alvarez@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "Racialized reported by a person at the company",
+      "exported_at": "2026-06-30",
+      "value": "Yes"
+    },
+    "Companies!S4": {
+      "contributors": [
+        {
+          "column": "dg_2slgbtq,dg_immigrants,dg_indigenous,dg_official_language_minority,dg_persons_with_disabilities,dg_racialized,dg_women,dg_youth",
+          "data_type": "person",
+          "field": "demographics",
+          "row_identity": "priya.sharma@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "Youth reported by a person at the company",
+      "exported_at": "2026-06-30",
+      "value": "Yes"
+    },
+    "Companies!S7": {
+      "contributors": [
+        {
+          "column": "dg_2slgbtq,dg_immigrants,dg_indigenous,dg_official_language_minority,dg_persons_with_disabilities,dg_racialized,dg_women,dg_youth",
+          "data_type": "person",
+          "field": "demographics",
+          "row_identity": "sofia.martins@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "Youth reported by a person at the company",
+      "exported_at": "2026-06-30",
+      "value": "Yes"
+    },
+    "Companies!T3": {
+      "contributors": [
+        {
+          "column": "dg_2slgbtq,dg_immigrants,dg_indigenous,dg_official_language_minority,dg_persons_with_disabilities,dg_racialized,dg_women,dg_youth",
+          "data_type": "person",
+          "field": "demographics",
+          "row_identity": "liam.okafor@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "Immigrants reported by a person at the company",
+      "exported_at": "2026-06-30",
+      "value": "Yes"
+    },
+    "Companies!T6": {
+      "contributors": [
+        {
+          "column": "dg_2slgbtq,dg_immigrants,dg_indigenous,dg_official_language_minority,dg_persons_with_disabilities,dg_racialized,dg_women,dg_youth",
+          "data_type": "person",
+          "field": "demographics",
+          "row_identity": "mei.tanaka@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "Immigrants reported by a person at the company",
+      "exported_at": "2026-06-30",
+      "value": "Yes"
+    },
+    "Companies!V2": {
+      "contributors": [
+        {
+          "column": "dg_2slgbtq,dg_immigrants,dg_indigenous,dg_official_language_minority,dg_persons_with_disabilities,dg_racialized,dg_women,dg_youth",
+          "data_type": "person",
+          "field": "demographics",
+          "row_identity": "ava.nguyen@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "Women reported by a person at the company",
+      "exported_at": "2026-06-30",
+      "value": "Yes"
+    },
+    "Companies!V4": {
+      "contributors": [
+        {
+          "column": "dg_2slgbtq,dg_immigrants,dg_indigenous,dg_official_language_minority,dg_persons_with_disabilities,dg_racialized,dg_women,dg_youth",
+          "data_type": "person",
+          "field": "demographics",
+          "row_identity": "priya.sharma@example.org",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "Women reported by a person at the company",
+      "exported_at": "2026-06-30",
+      "value": "Yes"
+    },
+    "Company Updates!A2": {
+      "column": "record_id",
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "source_id",
+      "row_identity": "HL-001",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-001"
+    },
+    "Company Updates!A3": {
+      "column": "record_id",
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "source_id",
+      "row_identity": "HL-002",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-002"
+    },
+    "Company Updates!A4": {
+      "column": "record_id",
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "source_id",
+      "row_identity": "HL-003",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-003"
+    },
+    "Company Updates!A5": {
+      "column": "record_id",
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "source_id",
+      "row_identity": "HL-004",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-004"
+    },
+    "Company Updates!A6": {
+      "column": "record_id",
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "source_id",
+      "row_identity": "HL-005",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-005"
+    },
+    "Company Updates!A7": {
+      "column": "record_id",
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "source_id",
+      "row_identity": "HL-007",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-007"
+    },
+    "Company Updates!A8": {
+      "column": "record_id",
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "source_id",
+      "row_identity": "HL-008",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-008"
+    },
+    "Company Updates!B2": {
+      "column": "record_id",
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "company_ref",
+      "row_identity": "HL-001",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-001"
+    },
+    "Company Updates!B3": {
+      "column": "record_id",
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "company_ref",
+      "row_identity": "HL-002",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-002"
+    },
+    "Company Updates!B4": {
+      "column": "record_id",
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "company_ref",
+      "row_identity": "HL-003",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-003"
+    },
+    "Company Updates!B5": {
+      "column": "record_id",
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "company_ref",
+      "row_identity": "HL-004",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-004"
+    },
+    "Company Updates!B6": {
+      "column": "record_id",
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "company_ref",
+      "row_identity": "HL-005",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-005"
+    },
+    "Company Updates!B7": {
+      "column": "record_id",
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "company_ref",
+      "row_identity": "HL-007",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-007"
+    },
+    "Company Updates!B8": {
+      "column": "record_id",
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "company_ref",
+      "row_identity": "HL-008",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-008"
+    },
+    "Company Updates!C2": {
+      "column": "company_name",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "legal_name",
+      "row_identity": "HL-001",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Tidewater Robotics"
+    },
+    "Company Updates!C3": {
+      "column": "company_name",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "legal_name",
+      "row_identity": "HL-002",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Beacon Health Systems"
+    },
+    "Company Updates!C4": {
+      "column": "company_name",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "legal_name",
+      "row_identity": "HL-003",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Saltmarsh Analytics"
+    },
+    "Company Updates!C5": {
+      "column": "company_name",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "legal_name",
+      "row_identity": "HL-004",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Nectar Foodworks"
+    },
+    "Company Updates!C6": {
+      "column": "company_name",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "legal_name",
+      "row_identity": "HL-005",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Kelp Bioscience"
+    },
+    "Company Updates!C7": {
+      "column": "company_name",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "legal_name",
+      "row_identity": "HL-007",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Harbour Freight Labs"
+    },
+    "Company Updates!C8": {
+      "column": "company_name",
+      "data_type": "company",
+      "exported_at": "2026-06-30",
+      "field": "legal_name",
+      "row_identity": "HL-008",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Tidewater Robotics"
+    },
+    "Company Updates!D2": {
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "update_date",
+      "mapping": "harbourline-crm",
+      "origin": "mapping_constant",
+      "row_identity": "HL-001",
+      "value": "2026-06-30"
+    },
+    "Company Updates!D3": {
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "update_date",
+      "mapping": "harbourline-crm",
+      "origin": "mapping_constant",
+      "row_identity": "HL-002",
+      "value": "2026-06-30"
+    },
+    "Company Updates!D4": {
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "update_date",
+      "mapping": "harbourline-crm",
+      "origin": "mapping_constant",
+      "row_identity": "HL-003",
+      "value": "2026-06-30"
+    },
+    "Company Updates!D5": {
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "update_date",
+      "mapping": "harbourline-crm",
+      "origin": "mapping_constant",
+      "row_identity": "HL-004",
+      "value": "2026-06-30"
+    },
+    "Company Updates!D6": {
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "update_date",
+      "mapping": "harbourline-crm",
+      "origin": "mapping_constant",
+      "row_identity": "HL-005",
+      "value": "2026-06-30"
+    },
+    "Company Updates!D7": {
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "update_date",
+      "mapping": "harbourline-crm",
+      "origin": "mapping_constant",
+      "row_identity": "HL-007",
+      "value": "2026-06-30"
+    },
+    "Company Updates!D8": {
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "update_date",
+      "mapping": "harbourline-crm",
+      "origin": "mapping_constant",
+      "row_identity": "HL-008",
+      "value": "2026-06-30"
+    },
+    "Company Updates!E2": {
+      "contributors": [
+        {
+          "column": "Cohort ID",
+          "data_type": "membership",
+          "field": "cohort_ref",
+          "row_identity": "COH-01",
+          "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+          "sheet": "Cohorts",
+          "source_file": "harbourline-programs.xlsx"
+        }
+      ],
+      "derivation": "programs via cohort memberships",
+      "exported_at": "2026-06-30",
+      "value": "Harbourline Accelerator 2026"
+    },
+    "Company Updates!E4": {
+      "contributors": [
+        {
+          "column": "Cohort ID",
+          "data_type": "membership",
+          "field": "cohort_ref",
+          "row_identity": "COH-02",
+          "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+          "sheet": "Cohorts",
+          "source_file": "harbourline-programs.xlsx"
+        }
+      ],
+      "derivation": "programs via cohort memberships",
+      "exported_at": "2026-06-30",
+      "value": "Harbourline Accelerator 2026"
+    },
+    "Company Updates!E7": {
+      "contributors": [
+        {
+          "column": "Cohort ID",
+          "data_type": "membership",
+          "field": "cohort_ref",
+          "row_identity": "COH-03",
+          "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+          "sheet": "Cohorts",
+          "source_file": "harbourline-programs.xlsx"
+        }
+      ],
+      "derivation": "programs via cohort memberships",
+      "exported_at": "2026-06-30",
+      "value": "Harbourline Accelerator 2026"
+    },
+    "Company Updates!L2": {
+      "contributors": [
+        {
+          "column": "Cohort ID",
+          "data_type": "membership",
+          "field": "cohort_ref",
+          "row_identity": "COH-01",
+          "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+          "sheet": "Cohorts",
+          "source_file": "harbourline-programs.xlsx"
+        }
+      ],
+      "derivation": "primary program via cohort membership",
+      "exported_at": "2026-06-30",
+      "value": "Harbourline Accelerator 2026"
+    },
+    "Company Updates!L4": {
+      "contributors": [
+        {
+          "column": "Cohort ID",
+          "data_type": "membership",
+          "field": "cohort_ref",
+          "row_identity": "COH-02",
+          "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+          "sheet": "Cohorts",
+          "source_file": "harbourline-programs.xlsx"
+        }
+      ],
+      "derivation": "primary program via cohort membership",
+      "exported_at": "2026-06-30",
+      "value": "Harbourline Accelerator 2026"
+    },
+    "Company Updates!L7": {
+      "contributors": [
+        {
+          "column": "Cohort ID",
+          "data_type": "membership",
+          "field": "cohort_ref",
+          "row_identity": "COH-03",
+          "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+          "sheet": "Cohorts",
+          "source_file": "harbourline-programs.xlsx"
+        }
+      ],
+      "derivation": "primary program via cohort membership",
+      "exported_at": "2026-06-30",
+      "value": "Harbourline Accelerator 2026"
+    },
+    "Company Updates!M2": {
+      "contributors": [
+        {
+          "column": "stage",
+          "data_type": "milestone_position",
+          "field": "rung_order",
+          "row_identity": "HL-001",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "funder stage from track 'software' rung 4",
+      "exported_at": "2026-06-30",
+      "value": "Growth"
+    },
+    "Company Updates!M3": {
+      "contributors": [
+        {
+          "column": "stage",
+          "data_type": "milestone_position",
+          "field": "rung_order",
+          "row_identity": "HL-002",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "funder stage from track 'software' rung 4",
+      "exported_at": "2026-06-30",
+      "value": "Growth"
+    },
+    "Company Updates!M4": {
+      "contributors": [
+        {
+          "column": "stage",
+          "data_type": "milestone_position",
+          "field": "rung_order",
+          "row_identity": "HL-003",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "funder stage from track 'software' rung 3",
+      "exported_at": "2026-06-30",
+      "value": "Early Adopters"
+    },
+    "Company Updates!M5": {
+      "contributors": [
+        {
+          "column": "stage",
+          "data_type": "milestone_position",
+          "field": "rung_order",
+          "row_identity": "HL-004",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "funder stage from track 'software' rung 4",
+      "exported_at": "2026-06-30",
+      "value": "Growth"
+    },
+    "Company Updates!M6": {
+      "contributors": [
+        {
+          "column": "stage",
+          "data_type": "milestone_position",
+          "field": "rung_order",
+          "row_identity": "HL-005",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "funder stage from track 'software' rung 2",
+      "exported_at": "2026-06-30",
+      "value": "MVP"
+    },
+    "Company Updates!M7": {
+      "contributors": [
+        {
+          "column": "stage",
+          "data_type": "milestone_position",
+          "field": "rung_order",
+          "row_identity": "HL-007",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "funder stage from track 'software' rung 1",
+      "exported_at": "2026-06-30",
+      "value": "Idea"
+    },
+    "Company Updates!M8": {
+      "contributors": [
+        {
+          "column": "stage",
+          "data_type": "milestone_position",
+          "field": "rung_order",
+          "row_identity": "HL-008",
+          "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+          "sheet": "default",
+          "source_file": "companies.csv"
+        }
+      ],
+      "derivation": "funder stage from track 'software' rung 1",
+      "exported_at": "2026-06-30",
+      "value": "Idea"
+    },
+    "Company Updates!N2": {
+      "column": "employees",
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "current_ftes",
+      "row_identity": "HL-001",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": 14
+    },
+    "Company Updates!N3": {
+      "column": "employees",
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "current_ftes",
+      "row_identity": "HL-002",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": 8
+    },
+    "Company Updates!N4": {
+      "column": "employees",
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "current_ftes",
+      "row_identity": "HL-003",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": 9
+    },
+    "Company Updates!N5": {
+      "column": "employees",
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "current_ftes",
+      "row_identity": "HL-004",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": 18
+    },
+    "Company Updates!N6": {
+      "column": "employees",
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "current_ftes",
+      "row_identity": "HL-005",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": 3
+    },
+    "Company Updates!N7": {
+      "column": "employees",
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "current_ftes",
+      "row_identity": "HL-007",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": 6
+    },
+    "Company Updates!N8": {
+      "column": "employees",
+      "data_type": "company_update",
+      "exported_at": "2026-06-30",
+      "field": "current_ftes",
+      "row_identity": "HL-008",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": 4
+    },
+    "Contacts!A2": {
+      "column": "contact_email",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "source_id",
+      "row_identity": "ava.nguyen@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "ava.nguyen@example.org"
+    },
+    "Contacts!A3": {
+      "column": "contact_email",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "source_id",
+      "row_identity": "diego.alvarez@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "diego.alvarez@example.org"
+    },
+    "Contacts!A4": {
+      "column": "contact_email",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "source_id",
+      "row_identity": "liam.okafor@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "liam.okafor@example.org"
+    },
+    "Contacts!A5": {
+      "column": "contact_email",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "source_id",
+      "row_identity": "mei.tanaka@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "mei.tanaka@example.org"
+    },
+    "Contacts!A6": {
+      "column": "contact_email",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "source_id",
+      "row_identity": "omar.haddad@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "omar.haddad@example.org"
+    },
+    "Contacts!A7": {
+      "column": "contact_email",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "source_id",
+      "row_identity": "priya.sharma@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "priya.sharma@example.org"
+    },
+    "Contacts!A8": {
+      "column": "contact_email",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "source_id",
+      "row_identity": "sofia.martins@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "sofia.martins@example.org"
+    },
+    "Contacts!B2": {
+      "column": "record_id",
+      "data_type": "company_person",
+      "exported_at": "2026-06-30",
+      "field": "company_ref",
+      "row_identity": "HL-001",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-001"
+    },
+    "Contacts!B3": {
+      "column": "record_id",
+      "data_type": "company_person",
+      "exported_at": "2026-06-30",
+      "field": "company_ref",
+      "row_identity": "HL-004",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-004"
+    },
+    "Contacts!B4": {
+      "column": "record_id",
+      "data_type": "company_person",
+      "exported_at": "2026-06-30",
+      "field": "company_ref",
+      "row_identity": "HL-002",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-002"
+    },
+    "Contacts!B5": {
+      "column": "record_id",
+      "data_type": "company_person",
+      "exported_at": "2026-06-30",
+      "field": "company_ref",
+      "row_identity": "HL-005",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-005"
+    },
+    "Contacts!B6": {
+      "column": "record_id",
+      "data_type": "company_person",
+      "exported_at": "2026-06-30",
+      "field": "company_ref",
+      "row_identity": "HL-008",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-008"
+    },
+    "Contacts!B7": {
+      "column": "record_id",
+      "data_type": "company_person",
+      "exported_at": "2026-06-30",
+      "field": "company_ref",
+      "row_identity": "HL-003",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-003"
+    },
+    "Contacts!B8": {
+      "column": "record_id",
+      "data_type": "company_person",
+      "exported_at": "2026-06-30",
+      "field": "company_ref",
+      "row_identity": "HL-007",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "HL-007"
+    },
+    "Contacts!C2": {
+      "column": "contact_first_name",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "first_name",
+      "row_identity": "ava.nguyen@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Ava"
+    },
+    "Contacts!C3": {
+      "column": "contact_first_name",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "first_name",
+      "row_identity": "diego.alvarez@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Diego"
+    },
+    "Contacts!C4": {
+      "column": "contact_first_name",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "first_name",
+      "row_identity": "liam.okafor@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Liam"
+    },
+    "Contacts!C5": {
+      "column": "contact_first_name",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "first_name",
+      "row_identity": "mei.tanaka@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Mei"
+    },
+    "Contacts!C6": {
+      "column": "contact_first_name",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "first_name",
+      "row_identity": "omar.haddad@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Omar"
+    },
+    "Contacts!C7": {
+      "column": "contact_first_name",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "first_name",
+      "row_identity": "priya.sharma@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Priya"
+    },
+    "Contacts!C8": {
+      "column": "contact_first_name",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "first_name",
+      "row_identity": "sofia.martins@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Sofia"
+    },
+    "Contacts!D2": {
+      "column": "contact_last_name",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "last_name",
+      "row_identity": "ava.nguyen@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Nguyen"
+    },
+    "Contacts!D3": {
+      "column": "contact_last_name",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "last_name",
+      "row_identity": "diego.alvarez@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Alvarez"
+    },
+    "Contacts!D4": {
+      "column": "contact_last_name",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "last_name",
+      "row_identity": "liam.okafor@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Okafor"
+    },
+    "Contacts!D5": {
+      "column": "contact_last_name",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "last_name",
+      "row_identity": "mei.tanaka@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Tanaka"
+    },
+    "Contacts!D6": {
+      "column": "contact_last_name",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "last_name",
+      "row_identity": "omar.haddad@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Haddad"
+    },
+    "Contacts!D7": {
+      "column": "contact_last_name",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "last_name",
+      "row_identity": "priya.sharma@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Sharma"
+    },
+    "Contacts!D8": {
+      "column": "contact_last_name",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "last_name",
+      "row_identity": "sofia.martins@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "Martins"
+    },
+    "Contacts!E2": {
+      "data_type": "company_person",
+      "exported_at": "2026-06-30",
+      "field": "role",
+      "mapping": "harbourline-crm",
+      "origin": "mapping_constant",
+      "row_identity": "HL-001",
+      "value": "Founder"
+    },
+    "Contacts!E3": {
+      "data_type": "company_person",
+      "exported_at": "2026-06-30",
+      "field": "role",
+      "mapping": "harbourline-crm",
+      "origin": "mapping_constant",
+      "row_identity": "HL-004",
+      "value": "Founder"
+    },
+    "Contacts!E4": {
+      "data_type": "company_person",
+      "exported_at": "2026-06-30",
+      "field": "role",
+      "mapping": "harbourline-crm",
+      "origin": "mapping_constant",
+      "row_identity": "HL-002",
+      "value": "Founder"
+    },
+    "Contacts!E5": {
+      "data_type": "company_person",
+      "exported_at": "2026-06-30",
+      "field": "role",
+      "mapping": "harbourline-crm",
+      "origin": "mapping_constant",
+      "row_identity": "HL-005",
+      "value": "Founder"
+    },
+    "Contacts!E6": {
+      "data_type": "company_person",
+      "exported_at": "2026-06-30",
+      "field": "role",
+      "mapping": "harbourline-crm",
+      "origin": "mapping_constant",
+      "row_identity": "HL-008",
+      "value": "Founder"
+    },
+    "Contacts!E7": {
+      "data_type": "company_person",
+      "exported_at": "2026-06-30",
+      "field": "role",
+      "mapping": "harbourline-crm",
+      "origin": "mapping_constant",
+      "row_identity": "HL-003",
+      "value": "Founder"
+    },
+    "Contacts!E8": {
+      "data_type": "company_person",
+      "exported_at": "2026-06-30",
+      "field": "role",
+      "mapping": "harbourline-crm",
+      "origin": "mapping_constant",
+      "row_identity": "HL-007",
+      "value": "Founder"
+    },
+    "Contacts!F2": {
+      "column": "contact_email",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "email",
+      "row_identity": "ava.nguyen@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "ava.nguyen@example.org"
+    },
+    "Contacts!F3": {
+      "column": "contact_email",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "email",
+      "row_identity": "diego.alvarez@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "diego.alvarez@example.org"
+    },
+    "Contacts!F4": {
+      "column": "contact_email",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "email",
+      "row_identity": "liam.okafor@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "liam.okafor@example.org"
+    },
+    "Contacts!F5": {
+      "column": "contact_email",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "email",
+      "row_identity": "mei.tanaka@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "mei.tanaka@example.org"
+    },
+    "Contacts!F6": {
+      "column": "contact_email",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "email",
+      "row_identity": "omar.haddad@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "omar.haddad@example.org"
+    },
+    "Contacts!F7": {
+      "column": "contact_email",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "email",
+      "row_identity": "priya.sharma@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "priya.sharma@example.org"
+    },
+    "Contacts!F8": {
+      "column": "contact_email",
+      "data_type": "person",
+      "exported_at": "2026-06-30",
+      "field": "email",
+      "row_identity": "sofia.martins@example.org",
+      "sha256": "5e11a131b62785f2822a5d814a6f7c0a5bf655f8a7fef733ac003c3b5f7e15fd",
+      "sheet": "default",
+      "source_file": "companies.csv",
+      "value": "sofia.martins@example.org"
+    },
+    "Contacts!H2": {
+      "data_type": "company_person",
+      "exported_at": "2026-06-30",
+      "field": "is_primary",
+      "mapping": "harbourline-crm",
+      "origin": "mapping_constant",
+      "row_identity": "HL-001",
+      "value": true
+    },
+    "Contacts!H3": {
+      "data_type": "company_person",
+      "exported_at": "2026-06-30",
+      "field": "is_primary",
+      "mapping": "harbourline-crm",
+      "origin": "mapping_constant",
+      "row_identity": "HL-004",
+      "value": true
+    },
+    "Contacts!H4": {
+      "data_type": "company_person",
+      "exported_at": "2026-06-30",
+      "field": "is_primary",
+      "mapping": "harbourline-crm",
+      "origin": "mapping_constant",
+      "row_identity": "HL-002",
+      "value": true
+    },
+    "Contacts!H5": {
+      "data_type": "company_person",
+      "exported_at": "2026-06-30",
+      "field": "is_primary",
+      "mapping": "harbourline-crm",
+      "origin": "mapping_constant",
+      "row_identity": "HL-005",
+      "value": true
+    },
+    "Contacts!H6": {
+      "data_type": "company_person",
+      "exported_at": "2026-06-30",
+      "field": "is_primary",
+      "mapping": "harbourline-crm",
+      "origin": "mapping_constant",
+      "row_identity": "HL-008",
+      "value": true
+    },
+    "Contacts!H7": {
+      "data_type": "company_person",
+      "exported_at": "2026-06-30",
+      "field": "is_primary",
+      "mapping": "harbourline-crm",
+      "origin": "mapping_constant",
+      "row_identity": "HL-003",
+      "value": true
+    },
+    "Contacts!H8": {
+      "data_type": "company_person",
+      "exported_at": "2026-06-30",
+      "field": "is_primary",
+      "mapping": "harbourline-crm",
+      "origin": "mapping_constant",
+      "row_identity": "HL-007",
+      "value": true
+    },
+    "Program Cohorts!A2": {
+      "column": "Cohort ID",
+      "data_type": "membership",
+      "exported_at": "2026-06-30",
+      "field": "source_id",
+      "row_identity": "COH-01",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Cohorts",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "COH-01"
+    },
+    "Program Cohorts!A3": {
+      "column": "Cohort ID",
+      "data_type": "membership",
+      "exported_at": "2026-06-30",
+      "field": "source_id",
+      "row_identity": "COH-02",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Cohorts",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "COH-02"
+    },
+    "Program Cohorts!A4": {
+      "column": "Cohort ID",
+      "data_type": "membership",
+      "exported_at": "2026-06-30",
+      "field": "source_id",
+      "row_identity": "COH-03",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Cohorts",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "COH-03"
+    },
+    "Program Cohorts!B2": {
+      "column": "Program ID",
+      "data_type": "cohort",
+      "exported_at": "2026-06-30",
+      "field": "program_ref",
+      "row_identity": "COH-01",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Cohorts",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "PRG-01"
+    },
+    "Program Cohorts!B3": {
+      "column": "Program ID",
+      "data_type": "cohort",
+      "exported_at": "2026-06-30",
+      "field": "program_ref",
+      "row_identity": "COH-02",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Cohorts",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "PRG-01"
+    },
+    "Program Cohorts!B4": {
+      "column": "Program ID",
+      "data_type": "cohort",
+      "exported_at": "2026-06-30",
+      "field": "program_ref",
+      "row_identity": "COH-03",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Cohorts",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "PRG-01"
+    },
+    "Program Cohorts!C2": {
+      "column": "Company ID",
+      "data_type": "membership",
+      "exported_at": "2026-06-30",
+      "field": "company_ref",
+      "row_identity": "COH-01",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Cohorts",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "HL-001"
+    },
+    "Program Cohorts!C3": {
+      "column": "Company ID",
+      "data_type": "membership",
+      "exported_at": "2026-06-30",
+      "field": "company_ref",
+      "row_identity": "COH-02",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Cohorts",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "HL-003"
+    },
+    "Program Cohorts!C4": {
+      "column": "Company ID",
+      "data_type": "membership",
+      "exported_at": "2026-06-30",
+      "field": "company_ref",
+      "row_identity": "COH-03",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Cohorts",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "HL-007"
+    },
+    "Program Cohorts!D2": {
+      "column": "Cohort Name",
+      "data_type": "cohort",
+      "exported_at": "2026-06-30",
+      "field": "cohort_name",
+      "row_identity": "COH-01",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Cohorts",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "Spring 2026"
+    },
+    "Program Cohorts!D3": {
+      "column": "Cohort Name",
+      "data_type": "cohort",
+      "exported_at": "2026-06-30",
+      "field": "cohort_name",
+      "row_identity": "COH-02",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Cohorts",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "Spring 2026"
+    },
+    "Program Cohorts!D4": {
+      "column": "Cohort Name",
+      "data_type": "cohort",
+      "exported_at": "2026-06-30",
+      "field": "cohort_name",
+      "row_identity": "COH-03",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Cohorts",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "Spring 2026"
+    },
+    "Program Cohorts!E2": {
+      "column": "Start Date",
+      "data_type": "cohort",
+      "exported_at": "2026-06-30",
+      "field": "start_date",
+      "row_identity": "COH-01",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Cohorts",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "2026-01-15"
+    },
+    "Program Cohorts!E3": {
+      "column": "Start Date",
+      "data_type": "cohort",
+      "exported_at": "2026-06-30",
+      "field": "start_date",
+      "row_identity": "COH-02",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Cohorts",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "2026-01-15"
+    },
+    "Program Cohorts!E4": {
+      "column": "Start Date",
+      "data_type": "cohort",
+      "exported_at": "2026-06-30",
+      "field": "start_date",
+      "row_identity": "COH-03",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Cohorts",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "2026-04-01"
+    },
+    "Program Cohorts!F2": {
+      "column": "End Date",
+      "data_type": "cohort",
+      "exported_at": "2026-06-30",
+      "field": "end_date",
+      "row_identity": "COH-01",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Cohorts",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "2026-06-30"
+    },
+    "Program Cohorts!F3": {
+      "column": "End Date",
+      "data_type": "cohort",
+      "exported_at": "2026-06-30",
+      "field": "end_date",
+      "row_identity": "COH-02",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Cohorts",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "2026-06-30"
+    },
+    "Program Cohorts!F4": {
+      "column": "End Date",
+      "data_type": "cohort",
+      "exported_at": "2026-06-30",
+      "field": "end_date",
+      "row_identity": "COH-03",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Cohorts",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "2026-06-30"
+    },
+    "Program Cohorts!G2": {
+      "column": "Company Status",
+      "data_type": "membership",
+      "exported_at": "2026-06-30",
+      "field": "status",
+      "row_identity": "COH-01",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Cohorts",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "Active"
+    },
+    "Program Cohorts!G3": {
+      "column": "Company Status",
+      "data_type": "membership",
+      "exported_at": "2026-06-30",
+      "field": "status",
+      "row_identity": "COH-02",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Cohorts",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "Active"
+    },
+    "Program Cohorts!G4": {
+      "column": "Company Status",
+      "data_type": "membership",
+      "exported_at": "2026-06-30",
+      "field": "status",
+      "row_identity": "COH-03",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Cohorts",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "Active"
+    },
+    "Programs!A2": {
+      "column": "Program ID",
+      "data_type": "program",
+      "exported_at": "2026-06-30",
+      "field": "source_id",
+      "row_identity": "PRG-01",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Programs",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "PRG-01"
+    },
+    "Programs!A3": {
+      "column": "Program ID",
+      "data_type": "program",
+      "exported_at": "2026-06-30",
+      "field": "source_id",
+      "row_identity": "PRG-02",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Programs",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "PRG-02"
+    },
+    "Programs!B2": {
+      "column": "Program Name",
+      "data_type": "program",
+      "exported_at": "2026-06-30",
+      "field": "name",
+      "row_identity": "PRG-01",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Programs",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "Harbourline Accelerator 2026"
+    },
+    "Programs!B3": {
+      "column": "Program Name",
+      "data_type": "program",
+      "exported_at": "2026-06-30",
+      "field": "name",
+      "row_identity": "PRG-02",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Programs",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "Coastal Founders Workshop"
+    },
+    "Programs!D2": {
+      "column": "Program Type",
+      "data_type": "program",
+      "exported_at": "2026-06-30",
+      "field": "program_type",
+      "row_identity": "PRG-01",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Programs",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "Accelerator"
+    },
+    "Programs!D3": {
+      "column": "Program Type",
+      "data_type": "program",
+      "exported_at": "2026-06-30",
+      "field": "program_type",
+      "row_identity": "PRG-02",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Programs",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "Workshop"
+    },
+    "Programs!E2": {
+      "column": "Start Date",
+      "data_type": "program",
+      "exported_at": "2026-06-30",
+      "field": "start_date",
+      "row_identity": "PRG-01",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Programs",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "2026-01-15"
+    },
+    "Programs!E3": {
+      "column": "Start Date",
+      "data_type": "program",
+      "exported_at": "2026-06-30",
+      "field": "start_date",
+      "row_identity": "PRG-02",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Programs",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "2026-02-10"
+    },
+    "Programs!F2": {
+      "column": "End Date",
+      "data_type": "program",
+      "exported_at": "2026-06-30",
+      "field": "end_date",
+      "row_identity": "PRG-01",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Programs",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "2026-06-30"
+    },
+    "Programs!F3": {
+      "column": "End Date",
+      "data_type": "program",
+      "exported_at": "2026-06-30",
+      "field": "end_date",
+      "row_identity": "PRG-02",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Programs",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "2026-02-11"
+    },
+    "Programs!G2": {
+      "column": "Status",
+      "data_type": "program",
+      "exported_at": "2026-06-30",
+      "field": "status",
+      "row_identity": "PRG-01",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Programs",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "Active"
+    },
+    "Programs!G3": {
+      "column": "Status",
+      "data_type": "program",
+      "exported_at": "2026-06-30",
+      "field": "status",
+      "row_identity": "PRG-02",
+      "sha256": "888ef99fc81c9d4b1e875d050660257381d2bb741d5fac992010c66b39347d02",
+      "sheet": "Programs",
+      "source_file": "harbourline-programs.xlsx",
+      "value": "Completed"
+    }
+  },
+  "exported_at": "2026-06-30",
+  "period": "2026-06-30",
+  "workbook": "bai-v5.xlsx"
+}

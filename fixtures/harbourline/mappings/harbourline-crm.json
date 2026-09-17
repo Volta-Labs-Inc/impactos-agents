@@ -1,0 +1,65 @@
+{
+  "mapping_version": "1.0.0",
+  "source": "harbourline-crm",
+  "source_type": "export",
+  "never_infer_note": "Demographic values are set only from the source columns listed under declared_demographics; company type and funding are set only from columns that declare them. Nothing is inferred from names, free text, stage, or the absence of a value. The milestone track is an author-declared deployment constant, not inferred by the tool.",
+  "data_types": {
+    "company": {
+      "sheet": "default",
+      "identity": "record_id",
+      "constants": { "source_system": "harbourline-crm" },
+      "columns": {
+        "company_name": { "field": "legal_name", "transform": "copy" },
+        "city": { "field": "city", "transform": "copy" },
+        "province": { "field": "province", "transform": "copy" }
+      }
+    },
+    "person": {
+      "sheet": "default",
+      "identity": "contact_email",
+      "constants": { "source_system": "harbourline-crm" },
+      "columns": {
+        "contact_first_name": { "field": "first_name", "transform": "copy" },
+        "contact_last_name": { "field": "last_name", "transform": "copy" },
+        "contact_email": { "field": "email", "transform": "copy" }
+      },
+      "declared_demographics": {
+        "dg_women": "Women",
+        "dg_indigenous": "Indigenous",
+        "dg_youth": "Youth",
+        "dg_immigrants": "Immigrants",
+        "dg_racialized": "Racialized",
+        "dg_2slgbtq": "2SLGBTQ+",
+        "dg_persons_with_disabilities": "Persons with disabilities",
+        "dg_official_language_minority": "Official Language Minority Communities"
+      }
+    },
+    "company_person": {
+      "sheet": "default",
+      "identity": "record_id",
+      "constants": { "source_system": "harbourline-crm", "role": "Founder", "is_primary": true },
+      "columns": {
+        "record_id": { "field": "company_ref", "transform": "copy" },
+        "contact_email": { "field": "person_ref", "transform": "copy" }
+      }
+    },
+    "company_update": {
+      "sheet": "default",
+      "identity": "record_id",
+      "constants": { "source_system": "harbourline-crm", "update_date": "2026-06-30" },
+      "columns": {
+        "record_id": { "field": "company_ref", "transform": "copy" },
+        "employees": { "field": "current_ftes", "transform": "number" }
+      }
+    },
+    "milestone_position": {
+      "sheet": "default",
+      "identity": "record_id",
+      "constants": { "source_system": "harbourline-crm", "track": "software", "as_of_date": "2026-06-30" },
+      "columns": {
+        "record_id": { "field": "company_ref", "transform": "copy" },
+        "stage": { "field": "rung_order", "transform": "funder_stage_to_rung", "track": "software" }
+      }
+    }
+  }
+}
