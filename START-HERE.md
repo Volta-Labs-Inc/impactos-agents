@@ -8,7 +8,8 @@ You are the helper. The organisation keeps ownership of their data. Nothing they
 
 ## Before you begin (once)
 
-1. **Get access to this repository** — ask Matt for a GitHub invite (private repo). Accept the email invite, then ask the AI app to clone it, or clone it yourself.
+1. **Clone this repository** — it is public: https://github.com/Volta-Labs-Inc/impactos-agents  
+   Ask the AI app to clone it, or clone it yourself. No invite needed.
 2. **Use an AI app that can reach a folder** — Claude Code, Cursor, or Claude Cowork with folder access. Chat-only Claude (no files) will not work.
 3. **Have Python 3.9+ installed** — on Mac, if unsure, ask the app to check. If it is missing, install from [python.org](https://www.python.org/downloads/) or `brew install python@3.12`, then come back.
 
