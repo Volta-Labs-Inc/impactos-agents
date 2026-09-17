@@ -275,6 +275,9 @@ def cmd_brief(args) -> Result:
         "message_count": len(built["messages"]),
     }
     result.summary = f"Wrote {json_path.name} and {md_path.name} from {records_path}."
+    return result
+
+
 def _compare_gate_error(args, document, out_dir: Path) -> Optional[str]:
     """Return a refusal reason for ``export --after-compare``, or ``None`` to allow."""
     from . import compare as compare_mod
