@@ -1,13 +1,14 @@
 PYTHON ?= python3
 
 .PHONY: check release-check test schema pii scan preflight fixtures manifest deps store-test help
-.PHONY: check release-check test schema pii scan preflight fixtures manifest deps help mirror mirror-check
+.PHONY: check release-check test schema pii scan preflight fixtures manifest deps help mirror mirror-check fixture-store
 
 help:
 	@echo "make check          - run tests + JSON Schema validation + PII/secret scan + CLI scan + skills mirror check"
 	@echo "make release-check   - verify release-manifest.json sha256 against files"
 	@echo "make test            - run the test suite (stdlib unittest)"
 	@echo "make store-test      - apply store migrations + seeds to a local Supabase stack and run the pgTAP access proofs"
+	@echo "make fixture-store   - run the store route end to end against a live fixture project (needs a provisioned project; see store/fixture/fixture_store.sh)"
 	@echo "make schema          - validate every contract file against its JSON Schema"
 	@echo "make pii             - run the PII / secret / agreement scan over fixtures"
 	@echo "make scan            - run the impactos CLI secret/PII scan over tracked files"
@@ -53,6 +54,11 @@ test:
 # green in environments without Docker.
 store-test:
 	@bash store/tests/run.sh
+
+# End-to-end store journey against a LIVE provisioned fixture project (network).
+# Not part of `make check`. See the script header for the environment it needs.
+fixture-store:
+	@bash store/fixture/fixture_store.sh
 
 release-check:
 	@$(PYTHON) tools/release_manifest.py check

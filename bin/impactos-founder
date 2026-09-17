@@ -1,0 +1,7 @@
+#!/bin/sh
+# impactOS founder shim (POSIX launcher). Exposes only `submit` and `status`.
+# No install step: runs the vendored package directly with system Python 3.9+.
+DIR=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
+PY="${IMPACTOS_PYTHON:-python3}"
+command -v "$PY" >/dev/null 2>&1 || PY=python
+exec "$PY" "$DIR/cli/founder_run.py" "$@"

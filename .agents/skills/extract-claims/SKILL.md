@@ -53,6 +53,24 @@ Confirmed claims are recorded as interaction records by the deterministic apply 
 
 Say how many claims you propose, how many are facts versus inferences versus assumptions, which participants resolved to a company, and what needs a person's eye. Do not paste raw JSON.
 
+## Store route
+
+If the organisation moved data into the optional store, a confirmed set of claims is written there with a preview-then-confirm gate instead of only into the file-route records:
+
+```bash
+impactos store login --email <you> --otp-request      # then --token <code>
+impactos store write --records <records.json>          # prints a preview + a request hash
+impactos store write --confirm <request-hash>          # applies only if nothing changed
+```
+
+The preview lists every fact and its source and expires after ten minutes. `--confirm` applies only when the preview still exists, has not expired, and the current inputs still hash to the same value; re-running the same confirm after it succeeds writes nothing (a replay no-op). If a value was recorded and later proved wrong, retract it — the original row stays for the record, and exports and briefs exclude it:
+
+```bash
+impactos store retract --fact <id> --fact-table <table> --reason "<why>"
+```
+
+Writing to the store always runs under your own sign-in; the store's access rules decide what you may write.
+
 ## Why the CLI, not the model
 
 Parsing, participant resolution against contract records, and dedup are deterministic and belong in the CLI. The judgment - what is a claim, its type, its confidence, and the evidence behind it - is exactly what a person must review, so it lives here and is always confirmed.
