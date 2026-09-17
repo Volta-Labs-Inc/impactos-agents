@@ -11,6 +11,7 @@ import argparse
 import datetime
 import hashlib
 import json
+import os
 import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional
@@ -47,6 +48,23 @@ def cmd_init(args) -> Result:
 
 def cmd_state(args) -> Result:
     return workspace.state(args.project_root)
+
+
+# --- store subcommands (issue #7 / 6a): login, provisioning, access wrappers --- #
+def cmd_store(args) -> Result:
+    from . import store as store_mod
+
+    if args.store_command == "login":
+        return store_mod.login(args.project_root, args)
+    if args.store_command == "provision":
+        return store_mod.provision(args.project_root, args, sys.argv[1:], dict(os.environ))
+    if args.store_command == "access" and args.access_command == "end":
+        return store_mod.access_end(args.project_root, args)
+    if args.store_command == "access" and args.access_command == "check":
+        return store_mod.access_check(args.project_root, args)
+    result = Result("store")
+    result.add_error("unknown store command")
+    return result
 
 
 def cmd_check(args) -> Result:
@@ -573,6 +591,38 @@ def build_parser() -> argparse.ArgumentParser:
     add_common(p)
     p.set_defaults(func=cmd_state)
 
+    # --- store: per-user login, provisioning, access wrappers (issue #7 / 6a) - #
+    store_p = sub.add_parser("store", help="the optional store: login, provisioning, access")
+    store_sub = store_p.add_subparsers(dest="store_command", required=True)
+
+    sp = store_sub.add_parser("login", help="sign in as a per-user session (Supabase Auth)")
+    sp.add_argument("--email", help="account email")
+    sp.add_argument("--password", help="password grant (fixture use)")
+    sp.add_argument("--otp-request", action="store_true", help="send an email login code (real use)")
+    sp.add_argument("--token", help="verify an email login code (real use)")
+    sp.add_argument("--api-url", help="project API URL (defaults to the provisioned value)")
+    sp.add_argument("--publishable-key", help="project publishable key (public; not a secret)")
+    add_common(sp)
+    sp.set_defaults(func=cmd_store)
+
+    sp = store_sub.add_parser("provision", help="apply migrations via the management API")
+    sp.add_argument("--project-ref", help="Supabase project reference")
+    sp.add_argument("--api-url", help="override the project API URL")
+    add_common(sp)
+    sp.set_defaults(func=cmd_store)
+
+    sp = store_sub.add_parser("access", help="access wrappers (end a role, check company access)")
+    access_sub = sp.add_subparsers(dest="access_command", required=True)
+    ap = access_sub.add_parser("end", help="end a user's role (e.g. a helper) by setting ends_at")
+    ap.add_argument("--user", required=True, help="the user's UUID")
+    ap.add_argument("--role", default="helper", help="role name to end (default: helper)")
+    ap.add_argument("--at", help="timestamp to set (default: now)")
+    add_common(ap)
+    ap.set_defaults(func=cmd_store, store_command="access")
+    cp = access_sub.add_parser("check", help="explicit access answer for a company (SR-21)")
+    cp.add_argument("--company", required=True, help="the company UUID")
+    add_common(cp)
+    cp.set_defaults(func=cmd_store, store_command="access")
     p = sub.add_parser("brief", help="build a company or portfolio brief (A2UI blueprint + Markdown)")
     p.add_argument("--company", help="company id (record identity) for a single-company brief")
     p.add_argument("--portfolio", action="store_true", help="build the portfolio brief instead")

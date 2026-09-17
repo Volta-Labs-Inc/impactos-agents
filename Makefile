@@ -1,11 +1,13 @@
 PYTHON ?= python3
 
+.PHONY: check release-check test schema pii scan preflight fixtures manifest deps store-test help
 .PHONY: check release-check test schema pii scan preflight fixtures manifest deps help mirror mirror-check
 
 help:
 	@echo "make check          - run tests + JSON Schema validation + PII/secret scan + CLI scan + skills mirror check"
 	@echo "make release-check   - verify release-manifest.json sha256 against files"
 	@echo "make test            - run the test suite (stdlib unittest)"
+	@echo "make store-test      - apply store migrations + seeds to a local Supabase stack and run the pgTAP access proofs"
 	@echo "make schema          - validate every contract file against its JSON Schema"
 	@echo "make pii             - run the PII / secret / agreement scan over fixtures"
 	@echo "make scan            - run the impactos CLI secret/PII scan over tracked files"
@@ -45,6 +47,12 @@ pii:
 
 test:
 	@$(PYTHON) -m unittest discover -s tests -v
+
+# Runs the store pgTAP access proofs against a local Supabase Postgres cluster
+# (needs Docker + `supabase start`). Not part of `make check`, which must stay
+# green in environments without Docker.
+store-test:
+	@bash store/tests/run.sh
 
 release-check:
 	@$(PYTHON) tools/release_manifest.py check
