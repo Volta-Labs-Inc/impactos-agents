@@ -2,6 +2,8 @@
 
 Helper-first starter for incubators and accelerators: a storage-independent data contract, a deterministic CLI the agent drives, and harness-portable skills so a non-technical helper can inventory where an organisation's data lives, choose per data type whether it stays put or moves to an optional store, and produce the funder-accepted direct-beneficiary spreadsheet every reporting period.
 
+**Helpers (non-technical):** start at [START-HERE.md](START-HERE.md).
+
 Built for organisations other than Volta. Not a version of Volta's impactOS, Coach OS, Founder OS or the ImpactOS Multi Tenant project.
 
 - Product contract: Linear [VOL-250](https://linear.app/volta/issue/VOL-250) in project [impactOS Agents](https://linear.app/volta/project/impactos-agents-42da62781968)
