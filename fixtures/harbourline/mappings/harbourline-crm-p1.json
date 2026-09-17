@@ -1,0 +1,38 @@
+{
+  "mapping_version": "1.0.0",
+  "source": "harbourline-crm-p1",
+  "source_type": "export",
+  "never_infer_note": "Period-1 mapping: no demographic columns existed yet, so none are mapped. Nothing is inferred.",
+  "data_types": {
+    "company": {
+      "sheet": "default",
+      "identity": "record_id",
+      "constants": { "source_system": "harbourline-crm" },
+      "columns": {
+        "company_name": { "field": "legal_name", "transform": "copy" },
+        "city": { "field": "city", "transform": "copy" },
+        "province": { "field": "province", "transform": "copy" }
+      }
+    },
+    "person": {
+      "sheet": "default",
+      "identity": "contact_email",
+      "constants": { "source_system": "harbourline-crm" },
+      "columns": {
+        "contact_first_name": { "field": "first_name", "transform": "copy" },
+        "contact_last_name": { "field": "last_name", "transform": "copy" },
+        "contact_email": { "field": "email", "transform": "copy" }
+      }
+    },
+    "company_update": {
+      "sheet": "default",
+      "identity": "record_id",
+      "constants": { "source_system": "harbourline-crm", "update_date": "2026-03-31" },
+      "columns": {
+        "record_id": { "field": "company_ref", "transform": "copy" },
+        "employees": { "field": "current_ftes", "transform": "number" },
+        "stage": { "field": "notes", "transform": "copy" }
+      }
+    }
+  }
+}
