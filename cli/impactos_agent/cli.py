@@ -15,7 +15,7 @@ import sys
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from . import parsers, paths, workspace
+from . import interview, parsers, paths, workspace
 from . import __version__
 from .check import run_check
 from .mapping import MappingError, apply_mapping, load_mapping
@@ -161,6 +161,14 @@ def cmd_export(args) -> Result:
     document = json.loads(records_path.read_text(encoding="utf-8"))
     out_dir = Path(args.out) if args.out else paths.workspace_dir(args.project_root) / "reports" / args.period
 
+    # Optional gate: refuse unless an acknowledged, still-valid compare exists.
+    if getattr(args, "after_compare", None) is not None:
+        gate_error = _compare_gate_error(args, document, out_dir)
+        if gate_error:
+            result.add_error(gate_error)
+            result.summary = "Export refused."
+            return result
+
     try:
         summary = Exporter(document).build(out_dir)
     except ExportError as exc:
@@ -267,6 +275,238 @@ def cmd_brief(args) -> Result:
         "message_count": len(built["messages"]),
     }
     result.summary = f"Wrote {json_path.name} and {md_path.name} from {records_path}."
+def _compare_gate_error(args, document, out_dir: Path) -> Optional[str]:
+    """Return a refusal reason for ``export --after-compare``, or ``None`` to allow."""
+    from . import compare as compare_mod
+
+    compare_file = out_dir / "compare.json"
+    if not compare_file.exists():
+        return (
+            f"no compare exists for period {args.period!r}; "
+            f"run `impactos compare --period {args.period}` first"
+        )
+    comparison = json.loads(compare_file.read_text(encoding="utf-8"))
+    ack = comparison.get("acknowledgement", {})
+
+    if args.after_compare != ack.get("hash"):
+        return "acknowledgement hash does not match the recorded compare; re-run compare and pass its hash"
+
+    if compare_mod.sha256_of(document) != ack.get("current_records_sha256"):
+        return "a source changed after compare (records differ); re-run compare before export"
+
+    baseline_period = ack.get("baseline_period")
+    baseline_sha = None
+    if baseline_period is not None:
+        baseline_file = compare_mod.baseline_path(args.project_root, baseline_period)
+        if not baseline_file.exists():
+            return "the prior baseline is missing; re-run compare before export"
+        baseline_sha = compare_mod.sha256_of(json.loads(baseline_file.read_text(encoding="utf-8")))
+    if baseline_sha != ack.get("baseline_sha256"):
+        return "the prior baseline changed after compare; re-run compare before export"
+
+    return None
+
+
+def cmd_compare(args) -> Result:
+    from . import compare as compare_mod
+
+    result = Result("compare")
+    records_file = compare_mod.records_path(args.project_root, args.period)
+    if not records_file.exists():
+        result.add_error(f"no records for period {args.period!r}; run apply-mapping first")
+        result.summary = "Compare refused."
+        return result
+
+    records_doc = json.loads(records_file.read_text(encoding="utf-8"))
+
+    prior_period = compare_mod.select_prior_period(args.project_root, args.period)
+    prior_baseline = None
+    if prior_period is not None:
+        prior_baseline = json.loads(
+            compare_mod.baseline_path(args.project_root, prior_period).read_text(encoding="utf-8")
+        )
+
+    comparison = compare_mod.compute(records_doc, prior_baseline)
+    comparison["acknowledgement"] = compare_mod.acknowledgement(records_doc, prior_baseline)
+
+    out_dir = Path(args.out) if args.out else paths.workspace_dir(args.project_root) / "reports" / args.period
+    _write_json(out_dir / "compare.json", comparison)
+    (out_dir / "compare.md").write_text(compare_mod.render_markdown(comparison), encoding="utf-8")
+
+    # Refresh THIS period's own baseline for a future period to compare against.
+    # Prior selection excludes the current label, so this never self-compares.
+    _write_json(
+        compare_mod.baseline_path(args.project_root, args.period),
+        compare_mod.build_baseline(records_doc),
+    )
+
+    totals = {kind: 0 for kind in ("changed", "new", "absent", "unmatched", "missing_required")}
+    for summary in comparison["data_types"].values():
+        for kind in totals:
+            totals[kind] += len(summary[kind])
+
+    result.data = {
+        "period": args.period,
+        "baseline_period": prior_period,
+        "compare_json": str(out_dir / "compare.json"),
+        "compare_md": str(out_dir / "compare.md"),
+        "acknowledgement_hash": comparison["acknowledgement"]["hash"],
+        "totals": totals,
+        "cost_of_support_present": comparison["cost_of_support_present"],
+    }
+    for data_type, summary in sorted(comparison["data_types"].items()):
+        for entry in summary["unmatched"]:
+            result.add_warning(
+                f"{data_type} {entry['identity']} unmatched: reuses the name of "
+                f"{entry['matches_existing_identity']} (never merged)"
+            )
+        for entry in summary["missing_required"]:
+            result.add_warning(
+                f"{data_type} {entry['identity']} missing required: {', '.join(entry['fields'])}"
+            )
+    result.summary = (
+        f"Compared {args.period} to {prior_period or '(no prior period)'}: "
+        f"{totals['changed']} changed, {totals['new']} new, {totals['absent']} absent, "
+        f"{totals['unmatched']} unmatched, {totals['missing_required']} missing required. "
+        f"Ack hash {comparison['acknowledgement']['hash'][:12]}."
+    )
+    return result
+
+
+def cmd_access_grant(args) -> Result:
+    from . import access
+
+    result = Result("access grant")
+    if args.scope not in access.SCOPES:
+        result.add_error(f"--scope is required and must be one of: {', '.join(access.SCOPES)}")
+        result.summary = "Refused."
+        return result
+    missing = [n for n, v in (("--name", args.name), ("--email", args.email), ("--start", args.start)) if not v]
+    if missing:
+        result.add_error("grant requires " + ", ".join(missing))
+        result.summary = "Refused."
+        return result
+
+    data = access.load(args.project_root)
+    entry = access.grant_entry(args.name, args.email, args.scope, args.start)
+    data["grants"].append(entry)
+    access.save(args.project_root, data)
+
+    result.data = {"grant": entry, "count": len(data["grants"])}
+    result.summary = f"Granted {args.scope} access to {args.name} ({args.email}) from {args.start}."
+    return result
+
+
+def cmd_access_end(args) -> Result:
+    from . import access
+
+    result = Result("access end")
+    missing = [
+        name for name, value in (
+            ("--deletion-confirmed-by", args.deletion_confirmed_by),
+            ("--confirmed-at", args.confirmed_at),
+            ("--confirmation-text", args.confirmation_text),
+        ) if not value
+    ]
+    if missing:
+        result.add_error("ending access requires written deletion confirmation: " + ", ".join(missing))
+        result.summary = "Refused."
+        return result
+    if not args.name:
+        result.add_error("access end requires --name")
+        result.summary = "Refused."
+        return result
+
+    data = access.load(args.project_root)
+    ok, message, entry = access.end_grant(
+        data, args.name, args.deletion_confirmed_by, args.confirmed_at, args.confirmation_text
+    )
+    if not ok:
+        result.add_error(message)
+        result.summary = "Refused."
+        return result
+
+    access.save(args.project_root, data)
+    result.data = {"grant": entry}
+    result.summary = (
+        f"Ended access for {args.name}; deletion confirmed by {args.deletion_confirmed_by} "
+        f"at {args.confirmed_at}."
+    )
+    return result
+
+
+def cmd_access_list(args) -> Result:
+    from . import access
+
+    result = Result("access list")
+    data = access.load(args.project_root)
+    result.data = {"grants": data["grants"], "count": len(data["grants"])}
+    result.summary = f"{len(data['grants'])} access record(s)."
+    return result
+def _default_questions_path() -> Path:
+    return paths.REPO_ROOT / "skills" / "onboarding" / "questions.json"
+
+
+def cmd_interview(args) -> Result:
+    """Deterministic bookkeeping for the onboarding interview (SR-02, SR-05)."""
+    result = Result("interview")
+    state_path = paths.workspace_dir(args.project_root) / "state" / "interview.json"
+
+    if args.action == "route":
+        source_map_path = Path(args.source_map) if args.source_map else args.project_root / "source-map.json"
+        if not source_map_path.exists():
+            result.add_error(f"source map not found: {source_map_path}")
+            return result
+        source_map = json.loads(source_map_path.read_text(encoding="utf-8"))
+        rows = interview.routes_from_source_map(source_map)
+        record = {"source_map": str(source_map_path), "generated_at": datetime.datetime.now(datetime.timezone.utc).isoformat(), "routes": rows}
+        _write_json(paths.workspace_dir(args.project_root) / "state" / "route.json", record)
+        result.data = {"routes": rows, "route_path": str(paths.workspace_dir(args.project_root) / "state" / "route.json")}
+        for row in rows:
+            if not row["matches_recommendation"]:
+                result.add_warning(
+                    f"{row['data_type']}: chosen route {row['chosen_route']!r} differs from recommendation {row['recommendation']!r}"
+                )
+        result.summary = "Route recommendations: " + ", ".join(f"{r['data_type']}={r['recommendation']}" for r in rows)
+        return result
+
+    if args.action == "reset":
+        if state_path.exists():
+            state_path.unlink()
+        result.data = {"reset": True, "state_path": str(state_path)}
+        result.summary = "Interview state cleared."
+        return result
+
+    questions_path = Path(args.questions) if args.questions else _default_questions_path()
+    if not questions_path.exists():
+        result.add_error(f"questions file not found: {questions_path}")
+        return result
+    try:
+        questions = interview.load_questions(questions_path)
+        state = interview.load_state(state_path)
+        if args.action == "answer":
+            if not args.id:
+                result.add_error("answer requires --id")
+                return result
+            interview.record_answer(state, args.id, args.value, questions)
+            interview.save_state(state_path, state)
+    except interview.InterviewError as exc:
+        result.add_error(str(exc))
+        return result
+
+    nxt = interview.next_question(questions, state)
+    result.data = {
+        "action": args.action,
+        "next_question": nxt,
+        "answered": interview.answered_ids(questions, state),
+        "remaining": interview.remaining_ids(questions, state),
+        "complete": nxt is None,
+        "state_path": str(state_path),
+    }
+    if nxt is None:
+        result.summary = f"Interview complete: {len(questions)} questions answered."
+    else:
+        result.summary = f"Next question ({nxt['id']}): {nxt.get('prompt', '')}"
     return result
 
 
@@ -314,6 +554,10 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("export", help="build the BAI v5 workbook, profile, gaps and provenance")
     p.add_argument("--period", required=True, help="reporting period label")
     p.add_argument("--out", help="write the report set here instead of the workspace")
+    p.add_argument(
+        "--after-compare",
+        help="acknowledged compare hash; gates export on a still-valid compare for this period",
+    )
     add_common(p)
     p.set_defaults(func=cmd_export)
 
@@ -334,6 +578,45 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--out", help="write the brief files here instead of workspace/briefs/")
     add_common(p)
     p.set_defaults(func=cmd_brief)
+    # Issue #5: period comparison (identity-only) against the prior baseline.
+    p = sub.add_parser("compare", help="compare a period to the prior period (identity-only matching)")
+    p.add_argument("--period", required=True, help="reporting period label")
+    p.add_argument("--out", help="write compare.json/compare.md here instead of the workspace")
+    add_common(p)
+    p.set_defaults(func=cmd_compare)
+
+    # Issue #5: the file-route helper access record.
+    p = sub.add_parser("access", help="record who may reach the workspace (file-route access)")
+    access_sub = p.add_subparsers(dest="access_command", required=True)
+
+    g = access_sub.add_parser("grant", help="record a person's access (name, email, scope, start)")
+    g.add_argument("--name", help="the person's name")
+    g.add_argument("--email", help="the person's email")
+    g.add_argument("--scope", help="access scope: staff or helper")
+    g.add_argument("--start", help="access start date (e.g. 2026-06-01)")
+    add_common(g)
+    g.set_defaults(func=cmd_access_grant)
+
+    e = access_sub.add_parser("end", help="end access with written deletion confirmation")
+    e.add_argument("--name", help="the person's name")
+    e.add_argument("--deletion-confirmed-by", help="who confirmed the workspace copy was deleted")
+    e.add_argument("--confirmed-at", help="when it was confirmed (e.g. 2026-09-16)")
+    e.add_argument("--confirmation-text", help="the exact written confirmation")
+    add_common(e)
+    e.set_defaults(func=cmd_access_end)
+
+    lst = access_sub.add_parser("list", help="list the access records")
+    add_common(lst)
+    lst.set_defaults(func=cmd_access_list)
+    p = sub.add_parser("interview", help="onboarding interview bookkeeping: next/answer/status/route/reset")
+    p.add_argument("--action", choices=["next", "answer", "status", "route", "reset"], default="next",
+                   help="next unanswered question (default), record an answer, status, route rule, or reset")
+    p.add_argument("--id", help="question id (for --action answer)")
+    p.add_argument("--value", help="answer value (for --action answer)")
+    p.add_argument("--questions", help="path to questions.json (default: skills/onboarding/questions.json)")
+    p.add_argument("--source-map", dest="source_map", help="path to source-map.json (for --action route)")
+    add_common(p)
+    p.set_defaults(func=cmd_interview)
 
     return parser
 
