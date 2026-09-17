@@ -5,11 +5,12 @@ leaving every fact in its existing systems. This document is the operating recor
 for it: who reads it, where the credentials live, exactly who is allowed to see
 what, and how that is proven.
 
-This issue (6a) ships the store's shape, its access rules, per-user sign-in, and
-provisioning. Writing facts into the store, retraction, the founder queue, and
-building reports or briefs from the store are a later increment (6b). The store
-route is proven on a disposable fixture only; a real organisation adopting it is a
-later milestone.
+6a ships the store's shape, its access rules, per-user sign-in, and provisioning.
+6b (this increment) adds the write path — preview-then-confirm writes with
+provenance, retraction with history, the founder submission queue with acceptance
+rules, and the same export and brief produced from the store. The store route is
+proven on a disposable fixture only; a real organisation adopting it is a later
+milestone.
 
 ## Who uses this database
 
@@ -113,6 +114,59 @@ advisor output *immediately after the migrations are applied*. The procedure:
 The advisor sees protection toggles and definer objects; it cannot see what a
 policy permits. It is one check, not the whole proof — the access proofs below are.
 
+## Writing to the store (6b)
+
+Nothing is written to a fact table by a raw insert. Every write goes through one
+of two guarded paths, and both run under the signed-in person's session, so 6a's
+policies still decide what may be written.
+
+- **Preview then confirm.** `impactos store write` computes one canonical request
+  hash over the proposed facts and their provenance, writes
+  `workspace/state/previews/<hash>.json` with a ten-minute expiry, and prints the
+  preview. `impactos store write --confirm <hash>` applies only if that preview
+  still exists, has not expired, and the current inputs still hash to the same
+  value. It calls one database function, `apply_write_batch`, whose first act is
+  to claim a write batch whose id is derived from the request hash; a second
+  confirm of the same hash finds the batch present and writes nothing (a replay
+  no-op). The whole write is one transaction. `apply_write_batch` is
+  `security invoker`, so a caller who is not staff or an active helper is refused
+  at the batch insert and the transaction rolls back.
+- **Retraction.** `impactos store retract --fact <id> --fact-table <t> --reason`
+  records a `retraction` row (actor and time from the session). The original row
+  is untouched, and the store reader excludes the fact from every export and
+  brief thereafter. Only staff or an active helper may retract (6a).
+
+### The founder queue
+
+A founder never writes a fact table. The `impactos-founder` shim exposes only
+`submit` and `status`; a submission lands `pending`, carrying its proposed fields
+(each with a field class) in the submission's payload. Acceptance runs inside one
+guarded function, `public.accept_submission(submission_id)` — `security definer`,
+`set search_path = public`, revoked from public and granted to authenticated. It
+reads the seeded `acceptance_rule` table (loaded from
+`contract/acceptance-rules.json`, D-17) and:
+
+- lets the submitting founder accept only when every proposed field class routes
+  to `auto_accept`; any `review` class needs staff or an active helper, and any
+  `reject` class is refused;
+- refuses a caller who is neither staff/helper nor the submission's own founder,
+  so a founder cannot act on another company's submission;
+- writes the facts with the founder recorded as the source and marks the
+  submission `accepted`.
+
+Because the function is definer it can write fact tables a founder cannot; the
+fact whitelist inside `app._insert_fact` keeps that power to fact tables only, so
+neither the acceptance path nor the batch path can be steered into a privilege
+table. `impactos store review --submission <id> --accept|--reject` drives the same
+function (or marks a submission rejected).
+
+### Export and brief from the store
+
+`impactos store export` and `impactos brief --from store` rebuild the file-route
+record shape from the store and run child 2's exporter and child 5's brief builder
+over it, excluding retracted facts. For the same records the store export equals
+the file-route export (same workbook values, profile and gaps).
+
 ## How the access rules are proven
 
 The proofs run as real roles (the anonymous role, and a signed-in user with a
@@ -131,6 +185,22 @@ real subject), because only that can tell a working rule from an open table.
 - **CLI behaviour (`tests/test_store_cli.py`).** Sign-in, the refresh-on-expiry
   retry, the provisioning gate, the secret-smuggling refusals, and the explicit
   "access denied" answer.
+- **Write path and queue (6b).** `store/tests/11_store_writes_test.sql` proves
+  the founder queue as real roles: anon cannot execute `accept_submission`, a
+  founder is refused a review class and another company's submission and accepted
+  for an auto-accept class, an already-accepted submission cannot be re-accepted,
+  staff accepts a review class, and `apply_write_batch` is atomic and idempotent
+  (a founder calling it is denied). `store/tests/12_provenance_constraints_test.sql`
+  proves the provenance NOT NULL and foreign-key constraints (SR-19). The
+  preview/confirm/replay logic and the retraction exclusion are proven off-cluster
+  in `tests/test_store_write.py` and `tests/test_store_reader.py`; the acceptance
+  policy in `tests/test_acceptance_rules.py`; the shim surface in
+  `tests/test_founder_shim.py`.
+- **End to end (`make fixture-store`).** The whole journey — provision, login,
+  ingest, preview, confirm, replay no-op, retract, founder submit, review, export
+  and brief from the store — against a live provisioned fixture project. See
+  `store/fixture/fixture_store.sh` for the environment it needs. It is not part of
+  `make check` (which never touches a network).
 
 Run the access proofs against a local Supabase Postgres cluster:
 

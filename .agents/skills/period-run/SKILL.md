@@ -45,6 +45,17 @@ If a source changed after the comparison was run, the export refuses rather than
 
 Say where the workbook was written, how complete it is, and what remains. The workbook under `workspace/reports/<period>/` is the funder-accepted spreadsheet for that period.
 
+## Store route
+
+If the organisation moved data into the optional store, the same period run builds the workbook from the store instead of a file-route records set:
+
+```bash
+impactos store login --email <you> --otp-request   # then --token <code>
+impactos store export --period <period>
+```
+
+The store export excludes any fact that has been retracted, so a corrected value never reaches the workbook. Everything else — the gap accounting, the provenance count, the template check — reads exactly as the file route. Read back the same summary in plain terms. There is no separate confirmation gate here because writing to the store is already a confirmed, preview-then-confirm step (see the extract-claims store branch); the export is a read.
+
 ## Why the CLI, not the model
 
 The comparison, the export, the gap accounting, and the changed-source refusal are deterministic and reproducible. The skill narrates them and holds the confirmation gate; it never computes or edits a reported number.

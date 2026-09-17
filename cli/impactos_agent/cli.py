@@ -50,7 +50,7 @@ def cmd_state(args) -> Result:
     return workspace.state(args.project_root)
 
 
-# --- store subcommands (issue #7 / 6a): login, provisioning, access wrappers --- #
+# --- store subcommands: login/provision/access (6a); write/retract/review/export (6b) --- #
 def cmd_store(args) -> Result:
     from . import store as store_mod
 
@@ -62,8 +62,77 @@ def cmd_store(args) -> Result:
         return store_mod.access_end(args.project_root, args)
     if args.store_command == "access" and args.access_command == "check":
         return store_mod.access_check(args.project_root, args)
+    if args.store_command == "write":
+        from . import store_writes
+        return store_writes.write(args.project_root, args)
+    if args.store_command == "retract":
+        from . import store_writes
+        return store_writes.retract(args.project_root, args)
+    if args.store_command == "review":
+        from . import store_writes
+        return store_writes.review(args.project_root, args)
+    if args.store_command == "export":
+        return cmd_store_export(args)
     result = Result("store")
     result.add_error("unknown store command")
+    return result
+
+
+def cmd_store_export(args) -> Result:
+    """Build the export set from the store (child 6b), excluding retracted facts.
+
+    The store reader rebuilds the same records shape the file route produces, so
+    the exporter and its provenance run unchanged over it.
+    """
+    from . import store_reader
+    from .exporter import Exporter, ExportError
+
+    result = Result("store export")
+    period = args.period or "store"
+    try:
+        document = store_reader.read_records(args.project_root, period)
+    except store_reader.StoreReadError as exc:
+        result.add_error(str(exc))
+        result.summary = "Export refused."
+        return result
+
+    out_dir = Path(args.out) if args.out else paths.workspace_dir(args.project_root) / "reports" / period
+    try:
+        summary = Exporter(document).build(out_dir)
+    except ExportError as exc:
+        result.add_error(str(exc))
+        result.summary = "Export refused."
+        return result
+
+    hash_set = {name: _sha256_file(out_dir / name) for name in HASH_SET}
+    run_manifest = {
+        "tool_version": __version__,
+        "period": period,
+        "route": "store",
+        "generated_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        "hash_set_sha256": hash_set,
+        "template_problems": summary["template_problems"],
+    }
+    _write_json(out_dir / "run.json", run_manifest)
+
+    result.data = {
+        "period": period,
+        "route": "store",
+        "report_dir": str(out_dir),
+        "hash_set": HASH_SET,
+        "hash_set_sha256": hash_set,
+        "populated_count": summary["populated_count"],
+        "gap_count": summary["gap_count"],
+        "provenance_cell_count": summary["provenance_cell_count"],
+        "template_problems": summary["template_problems"],
+    }
+    if summary["template_problems"]:
+        for problem in summary["template_problems"]:
+            result.add_error(f"output is not a valid BAI v5 template: {problem}")
+    result.summary = (
+        f"Exported {period} from the store: {summary['populated_count']} profile fields populated, "
+        f"{summary['gap_count']} gaps, {summary['provenance_cell_count']} provenance cells."
+    )
     return result
 
 
@@ -240,6 +309,18 @@ def cmd_brief(args) -> Result:
         result.add_error("choose exactly one of --company <id> or --portfolio")
         return result
 
+    # Resolve the records document. --from store reads the store (excluding
+    # retracted facts) instead of a file-route records.json.
+    if getattr(args, "from_route", "file") == "store":
+        from . import store_reader
+        try:
+            document = store_reader.read_records(args.project_root, args.period or "store")
+        except store_reader.StoreReadError as exc:
+            result.add_error(str(exc))
+            result.summary = "Refused."
+            return result
+        return _finish_brief(args, document, "store")
+
     # Resolve the records document.
     if args.records:
         records_path = Path(args.records)
@@ -261,7 +342,14 @@ def cmd_brief(args) -> Result:
         return result
 
     document = json.loads(records_path.read_text(encoding="utf-8"))
+    return _finish_brief(args, document, str(records_path))
 
+
+def _finish_brief(args, document, source_label: str) -> Result:
+    """Build, validate and write a brief from a resolved records document."""
+    from . import a2ui, brief
+
+    result = Result("brief")
     try:
         built = brief.build_company_brief(document, args.company) if args.company \
             else brief.build_portfolio_brief(document)
@@ -287,12 +375,12 @@ def cmd_brief(args) -> Result:
     result.data = {
         "kind": "company" if args.company else "portfolio",
         "surface_id": built["surface_id"],
-        "records_path": str(records_path),
+        "records_path": source_label,
         "json_path": str(json_path),
         "markdown_path": str(md_path),
         "message_count": len(built["messages"]),
     }
-    result.summary = f"Wrote {json_path.name} and {md_path.name} from {records_path}."
+    result.summary = f"Wrote {json_path.name} and {md_path.name} from {source_label}."
     return result
 
 
@@ -623,11 +711,44 @@ def build_parser() -> argparse.ArgumentParser:
     cp.add_argument("--company", required=True, help="the company UUID")
     add_common(cp)
     cp.set_defaults(func=cmd_store, store_command="access")
+
+    # --- store writes (issue #8 / 6b): preview-confirm, retract, review, export - #
+    wp = store_sub.add_parser("write", help="preview facts to write (or --confirm <hash> to apply)")
+    wp.add_argument("--records", help="path to a records.json to write (from apply-mapping)")
+    wp.add_argument("--period", help="period label to resolve records from the workspace")
+    wp.add_argument("--confirm", help="apply the preview with this request hash")
+    wp.add_argument("--note", help="an optional note recorded on the write batch")
+    add_common(wp)
+    wp.set_defaults(func=cmd_store)
+
+    rp = store_sub.add_parser("retract", help="retract a fact by id (staff/helper); original untouched")
+    rp.add_argument("--fact", required=True, help="the database id (uuid) of the fact to retract")
+    rp.add_argument("--fact-table", dest="fact_table", required=True,
+                    help="the fact's table (e.g. company_update, funding_event)")
+    rp.add_argument("--reason", required=True, help="why the fact is retracted (recorded)")
+    add_common(rp)
+    rp.set_defaults(func=cmd_store)
+
+    vp = store_sub.add_parser("review", help="accept or reject a founder submission (staff/helper)")
+    vp.add_argument("--submission", required=True, help="the submission uuid")
+    vp.add_argument("--accept", action="store_true", help="accept via the guarded acceptance function")
+    vp.add_argument("--reject", action="store_true", help="reject the submission")
+    add_common(vp)
+    vp.set_defaults(func=cmd_store)
+
+    ep = store_sub.add_parser("export", help="build the BAI export from the store (excludes retracted facts)")
+    ep.add_argument("--period", help="period label for the report directory (default: 'store')")
+    ep.add_argument("--out", help="write the report set here instead of the workspace")
+    add_common(ep)
+    ep.set_defaults(func=cmd_store)
+
     p = sub.add_parser("brief", help="build a company or portfolio brief (A2UI blueprint + Markdown)")
     p.add_argument("--company", help="company id (record identity) for a single-company brief")
     p.add_argument("--portfolio", action="store_true", help="build the portfolio brief instead")
     p.add_argument("--records", help="path to a records.json (default: resolve from the workspace)")
     p.add_argument("--period", help="reporting period label to read records for (default: latest)")
+    p.add_argument("--from", dest="from_route", choices=["file", "store"], default="file",
+                   help="read records from the file route (default) or the store")
     p.add_argument("--out", help="write the brief files here instead of workspace/briefs/")
     add_common(p)
     p.set_defaults(func=cmd_brief)
