@@ -209,6 +209,75 @@ def cmd_export(args) -> Result:
     return result
 
 
+def cmd_brief(args) -> Result:
+    """Build a company or portfolio brief (A2UI blueprint + Markdown).
+
+    Display-only: reads the file-route records for a period and never writes back
+    into the record. Refuses to write an invalid blueprint.
+    """
+    from . import a2ui, brief
+
+    result = Result("brief")
+    if bool(args.company) == bool(args.portfolio):
+        result.add_error("choose exactly one of --company <id> or --portfolio")
+        return result
+
+    # Resolve the records document.
+    if args.records:
+        records_path = Path(args.records)
+    else:
+        state_dir = paths.workspace_dir(args.project_root) / "state"
+        if args.period:
+            records_path = state_dir / args.period / "records.json"
+        else:
+            periods = sorted(
+                (p.name for p in state_dir.iterdir() if p.is_dir() and (p / "records.json").exists()),
+                reverse=True,
+            ) if state_dir.exists() else []
+            if not periods:
+                result.add_error("no records found; run apply-mapping or pass --records / --period")
+                return result
+            records_path = state_dir / periods[0] / "records.json"
+    if not records_path.exists():
+        result.add_error(f"records not found: {records_path}")
+        return result
+
+    document = json.loads(records_path.read_text(encoding="utf-8"))
+
+    try:
+        built = brief.build_company_brief(document, args.company) if args.company \
+            else brief.build_portfolio_brief(document)
+    except brief.BriefError as exc:
+        result.add_error(str(exc))
+        result.summary = "Refused."
+        return result
+
+    schema_errors = a2ui.validate_messages(built["messages"])
+    if schema_errors:
+        for message in schema_errors:
+            result.add_error(f"invalid A2UI blueprint: {message}")
+        result.summary = "Refusing to write an invalid blueprint."
+        return result
+
+    out_dir = Path(args.out) if args.out else paths.workspace_dir(args.project_root) / "briefs"
+    json_path = out_dir / f"{built['name']}.json"
+    md_path = out_dir / f"{built['name']}.md"
+    _write_json(json_path, built["messages"])
+    md_path.parent.mkdir(parents=True, exist_ok=True)
+    md_path.write_text(built["markdown"], encoding="utf-8")
+
+    result.data = {
+        "kind": "company" if args.company else "portfolio",
+        "surface_id": built["surface_id"],
+        "records_path": str(records_path),
+        "json_path": str(json_path),
+        "markdown_path": str(md_path),
+        "message_count": len(built["messages"]),
+    }
+    result.summary = f"Wrote {json_path.name} and {md_path.name} from {records_path}."
+    return result
+
+
 def _compare_gate_error(args, document, out_dir: Path) -> Optional[str]:
     """Return a refusal reason for ``export --after-compare``, or ``None`` to allow."""
     from . import compare as compare_mod
@@ -504,6 +573,14 @@ def build_parser() -> argparse.ArgumentParser:
     add_common(p)
     p.set_defaults(func=cmd_state)
 
+    p = sub.add_parser("brief", help="build a company or portfolio brief (A2UI blueprint + Markdown)")
+    p.add_argument("--company", help="company id (record identity) for a single-company brief")
+    p.add_argument("--portfolio", action="store_true", help="build the portfolio brief instead")
+    p.add_argument("--records", help="path to a records.json (default: resolve from the workspace)")
+    p.add_argument("--period", help="reporting period label to read records for (default: latest)")
+    p.add_argument("--out", help="write the brief files here instead of workspace/briefs/")
+    add_common(p)
+    p.set_defaults(func=cmd_brief)
     # Issue #5: period comparison (identity-only) against the prior baseline.
     p = sub.add_parser("compare", help="compare a period to the prior period (identity-only matching)")
     p.add_argument("--period", required=True, help="reporting period label")

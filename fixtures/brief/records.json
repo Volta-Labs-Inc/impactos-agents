@@ -1,0 +1,85 @@
+{
+  "period": "2026-06-30",
+  "sources": [
+    {"source_file": "aurora-crm.csv", "content_sha256": "0000000000000000000000000000000000000000000000000000000000000000", "mapping": "aurora-crm"}
+  ],
+  "additions": [],
+  "flags": [
+    {"data_type": "company_update", "row": 4, "identity": "ACME-1", "flag": "unparseable_value", "detail": "employees: 'twelve' is not a number; left unset"},
+    {"data_type": "company", "row": 5, "identity": "ACME-1", "flag": "never_inferred_demographic", "detail": "a demographic hint was present but no source column declares demographics; demographics left unset"}
+  ],
+  "records": {
+    "company": [
+      {
+        "identity": "ACME-1",
+        "flags": [],
+        "fields": {
+          "source_system": "aurora-crm",
+          "source_id": "ACME-1",
+          "legal_name": "Aurora Robotics Inc.",
+          "operating_name": "Aurora Robotics",
+          "industry": "Advanced manufacturing",
+          "city": "Halifax",
+          "province": "NS",
+          "country": "Canada",
+          "website": "https://aurora.example.org"
+        }
+      },
+      {
+        "identity": "ACME-2",
+        "flags": [],
+        "fields": {
+          "source_system": "aurora-crm",
+          "source_id": "ACME-2",
+          "legal_name": "Beacon Analytics Ltd.",
+          "operating_name": "Beacon Analytics",
+          "industry": "Software",
+          "city": "Moncton",
+          "province": "NB",
+          "country": "Canada"
+        }
+      }
+    ],
+    "milestone_position": [
+      {
+        "identity": "ACME-1",
+        "flags": [],
+        "fields": {"source_system": "aurora-crm", "source_id": "ACME-1", "company_ref": "ACME-1", "track": "software", "rung_order": 3, "as_of_date": "2026-06-30"}
+      },
+      {
+        "identity": "ACME-2",
+        "flags": [],
+        "fields": {"source_system": "aurora-crm", "source_id": "ACME-2", "company_ref": "ACME-2", "track": "software", "rung_order": 2, "as_of_date": "2026-06-30"}
+      }
+    ],
+    "milestone_target": [
+      {
+        "identity": "ACME-1",
+        "flags": [],
+        "fields": {"source_system": "aurora-crm", "source_id": "ACME-1", "company_ref": "ACME-1", "track": "software", "target_rung_order": 5, "objective_signal": "Repeatable sales motion with three reference customers.", "set_at": "2026-04-01"}
+      }
+    ],
+    "interaction": [
+      {
+        "identity": "INT-1001",
+        "flags": [],
+        "fields": {"source_system": "aurora-crm", "source_id": "INT-1001", "company_ref": "ACME-1", "interaction_type": "meeting", "occurred_at": "2026-06-01", "subject": "Q2 progress review"}
+      },
+      {
+        "identity": "INT-1002",
+        "flags": [],
+        "fields": {"source_system": "aurora-crm", "source_id": "INT-1002", "company_ref": "ACME-1", "interaction_type": "email", "occurred_at": "2026-05-15", "subject": "Introduction to the growth grant"}
+      },
+      {
+        "identity": "INT-1003",
+        "flags": [],
+        "fields": {"source_system": "aurora-crm", "source_id": "INT-1003", "company_ref": "ACME-1", "interaction_type": "call", "occurred_at": "2026-04-20", "subject": "Hiring plan check-in"}
+      },
+      {
+        "identity": "INT-1000",
+        "flags": [],
+        "fields": {"source_system": "aurora-crm", "source_id": "INT-1000", "company_ref": "ACME-1", "interaction_type": "meeting", "occurred_at": "2026-03-10", "subject": "Cohort kickoff"}
+      }
+    ]
+  }
+}
