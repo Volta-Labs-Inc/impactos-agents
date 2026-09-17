@@ -376,6 +376,7 @@ def cmd_access_list(args) -> Result:
     data = access.load(args.project_root)
     result.data = {"grants": data["grants"], "count": len(data["grants"])}
     result.summary = f"{len(data['grants'])} access record(s)."
+    return result
 def _default_questions_path() -> Path:
     return paths.REPO_ROOT / "skills" / "onboarding" / "questions.json"
 
