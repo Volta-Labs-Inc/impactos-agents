@@ -1,0 +1,30 @@
+{
+  "meeting_id": "ff-2026-0418-001",
+  "title": "Harbourline coaching \u2014 Tidewater Robotics",
+  "date": "2026-04-18",
+  "duration_minutes": 45,
+  "participants": [
+    {
+      "name": "Ava Nguyen",
+      "email": "ava.nguyen@example.org"
+    },
+    {
+      "name": "Jordan Lee",
+      "email": "jordan.lee@example.org"
+    }
+  ],
+  "transcript": [
+    {
+      "speaker": "Jordan Lee",
+      "text": "How did the pilot with the port authority go this month?"
+    },
+    {
+      "speaker": "Ava Nguyen",
+      "text": "We closed the second paying customer and grew the team to fourteen."
+    },
+    {
+      "speaker": "Jordan Lee",
+      "text": "Great. Let's set the next milestone around repeatable sales."
+    }
+  ]
+}

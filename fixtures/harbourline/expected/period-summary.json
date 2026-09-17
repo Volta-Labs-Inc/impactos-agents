@@ -1,0 +1,9 @@
+{
+  "fixture": "harbourline",
+  "period_1_companies": 6,
+  "period_2_companies": 7,
+  "changed_employee_counts": 3,
+  "new_companies": 1,
+  "absent_companies": 1,
+  "unmatched_name_collisions": 1
+}

@@ -1,0 +1,16 @@
+{
+  "contract_version": "1.0.0",
+  "generated_from": "docs/estate-analysis-2026-09-16.md (D-17): auto-accept metrics; review stage, funding and demographics.",
+  "notes": "Default founder-submission acceptance policy per field class. A route decides whether a parsed submission value is applied automatically or held for a person to confirm. Adopters may override per deployment; a later child implements the store route.",
+  "routes": ["auto_accept", "review", "reject"],
+  "default_policy_by_class": {
+    "identifier": { "route": "auto_accept", "rationale": "Source identifiers are structural, not judgement calls." },
+    "descriptive": { "route": "auto_accept", "rationale": "Names and labels are low-risk; corrections are cheap." },
+    "operational": { "route": "auto_accept", "rationale": "Dates, statuses and references are structural." },
+    "metric": { "route": "auto_accept", "rationale": "Metrics such as employee counts and revenue figures are auto-accepted (D-17)." },
+    "financial": { "route": "review", "rationale": "Funding and financial amounts are reviewed before they are applied (D-17)." },
+    "personal": { "route": "review", "rationale": "Personal contact details are reviewed to avoid mis-association." },
+    "demographic": { "route": "review", "rationale": "Demographics are never inferred and are reviewed before applying (D-17, D-18)." },
+    "stage": { "route": "review", "rationale": "Milestone and stage positions are reviewed before they are applied (D-17)." }
+  }
+}

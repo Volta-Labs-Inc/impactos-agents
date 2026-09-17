@@ -1,0 +1,7 @@
+﻿record_id,company_name,contact_first_name,contact_last_name,contact_email,employees,stage,city,province
+HL-001,Tidewater Robotics,Ava,Nguyen,ava.nguyen@example.org,12,Growth,Halifax,NS
+HL-002,Beacon Health Systems,Liam,Okafor,liam.okafor@example.org,8,Early Adopters,Moncton,NB
+HL-003,Saltmarsh Analytics,Priya,Sharma,priya.sharma@example.org,5,MVP,Charlottetown,PE
+HL-004,Nectar Foodworks,Diego,Alvarez,diego.alvarez@example.org,20,Growth,St. John's,NL
+HL-005,Kelp Bioscience,Mei,Tanaka,mei.tanaka@example.org,3,Idea,Halifax,NS
+HL-006,Granite Ledger,Noah,Bergeron,noah.bergeron@example.org,15,Scale,Fredericton,NB

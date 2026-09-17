@@ -1,0 +1,63 @@
+{
+  "contract_version": "1.0.0",
+  "generated_from": "ImpactOS Multi Tenant milestone_definitions, captured in docs/estate-analysis-2026-09-16.md (D-07).",
+  "notes": "Four system milestone tracks. Each rung carries a funder_stage so a company's position rolls up to the funder's stage vocabulary for reporting. funder_stage values come from funder_stage_vocabulary (the BAI stage-of-growth scale).",
+  "funder_stage_vocabulary": ["Idea", "MVP", "Early Adopters", "Growth", "Scale"],
+  "tracks": [
+    {
+      "slug": "software",
+      "name": "Software",
+      "description": "Software company progression from validated problem to product-market fit.",
+      "rungs": [
+        { "order": 1, "name": "Problem Validated", "evidence_description": "Interviews and research confirm a real, prioritised problem for a defined customer.", "objective_signal": "Documented problem statement with corroborating customer interviews.", "funder_stage": "Idea" },
+        { "order": 2, "name": "Solution Validated", "evidence_description": "Prospective customers confirm the proposed solution addresses the problem.", "objective_signal": "Positive solution-validation interviews or a signed letter of intent.", "funder_stage": "MVP" },
+        { "order": 3, "name": "First Paying Customer", "evidence_description": "A customer pays for the product.", "objective_signal": "First closed-won paid contract or transaction.", "funder_stage": "Early Adopters" },
+        { "order": 4, "name": "Repeatable Sales with ICP", "evidence_description": "Sales repeat within a defined ideal customer profile with healthy conversion.", "objective_signal": "About $10K MRR/monthly revenue at roughly 40% win rate within the ICP.", "funder_stage": "Growth" },
+        { "order": 5, "name": "Early Product-Market Fit", "evidence_description": "Retention and demand indicate early product-market fit.", "objective_signal": "About $100K revenue with roughly 60% retention or repeat purchase.", "funder_stage": "Growth" },
+        { "order": 6, "name": "Product-Market Fit", "evidence_description": "Durable demand and retention at scale.", "objective_signal": "About $1M revenue with roughly 80% retention.", "funder_stage": "Scale" }
+      ]
+    },
+    {
+      "slug": "hardware",
+      "name": "Hardware",
+      "description": "Hardware company progression from validated problem to market adoption.",
+      "rungs": [
+        { "order": 1, "name": "Problem Validated", "evidence_description": "Research confirms a real, prioritised problem for a defined customer.", "objective_signal": "Documented problem statement with corroborating customer interviews.", "funder_stage": "Idea" },
+        { "order": 2, "name": "Proof of Concept Built", "evidence_description": "A working proof of concept demonstrates technical feasibility.", "objective_signal": "Functioning bench prototype demonstrating the core mechanism.", "funder_stage": "MVP" },
+        { "order": 3, "name": "User-Validated MVP", "evidence_description": "A minimum viable product is tested and validated with users.", "objective_signal": "Users complete the core task with a working MVP and confirm value.", "funder_stage": "MVP" },
+        { "order": 4, "name": "Pilot Production and First Customers", "evidence_description": "Pilot-scale production delivers units to first paying customers.", "objective_signal": "Pilot run shipped; first customers paying for units.", "funder_stage": "Early Adopters" },
+        { "order": 5, "name": "Mass Production Ready", "evidence_description": "Design and supply chain are ready for volume manufacturing.", "objective_signal": "Design-for-manufacture complete; contract manufacturer secured.", "funder_stage": "Growth" },
+        { "order": 6, "name": "Early Traction", "evidence_description": "Sales demonstrate early market traction.", "objective_signal": "About $100K in cumulative sales.", "funder_stage": "Growth" },
+        { "order": 7, "name": "Market Validation", "evidence_description": "Sustained sales validate the market.", "objective_signal": "About $1M in sales.", "funder_stage": "Scale" },
+        { "order": 8, "name": "Market Adoption", "evidence_description": "Broad market adoption at scale.", "objective_signal": "About $10M in sales.", "funder_stage": "Scale" }
+      ]
+    },
+    {
+      "slug": "medical_device",
+      "name": "Medical Device",
+      "description": "Medical device progression from validated clinical need to scaled adoption.",
+      "rungs": [
+        { "order": 1, "name": "Clinical Need Validated", "evidence_description": "The clinical need and target use are validated with clinicians.", "objective_signal": "Documented clinical need with clinician corroboration.", "funder_stage": "Idea" },
+        { "order": 2, "name": "Prototype Validated (ISO 14971)", "evidence_description": "A prototype is validated with risk management per ISO 14971.", "objective_signal": "Validated prototype with an ISO 14971 risk file.", "funder_stage": "MVP" },
+        { "order": 3, "name": "Clinical Evidence", "evidence_description": "Clinical study generates evidence of safety and performance.", "objective_signal": "Completed clinical study with reported outcomes.", "funder_stage": "Early Adopters" },
+        { "order": 4, "name": "Regulatory Clearance", "evidence_description": "The device receives regulatory clearance or approval to market.", "objective_signal": "Health Canada / FDA clearance or approval obtained.", "funder_stage": "Growth" },
+        { "order": 5, "name": "Reimbursement Validated", "evidence_description": "Payers reimburse the device.", "objective_signal": "Reimbursement pathway confirmed with a payer.", "funder_stage": "Growth" },
+        { "order": 6, "name": "Market Adoption", "evidence_description": "Adoption generates meaningful revenue.", "objective_signal": "About $1M in revenue.", "funder_stage": "Scale" },
+        { "order": 7, "name": "Scaled Adoption", "evidence_description": "Adoption scales across sites and geographies.", "objective_signal": "About $10M in revenue.", "funder_stage": "Scale" }
+      ]
+    },
+    {
+      "slug": "biotech_pharma",
+      "name": "Biotech/Pharma",
+      "description": "Biotech and pharma progression from preclinical validation to commercial launch.",
+      "rungs": [
+        { "order": 1, "name": "Preclinical Validation", "evidence_description": "Preclinical studies validate the candidate.", "objective_signal": "Positive preclinical results supporting progression.", "funder_stage": "Idea" },
+        { "order": 2, "name": "Safety in Humans", "evidence_description": "Early-phase trials demonstrate safety in humans.", "objective_signal": "Phase 1 safety demonstrated.", "funder_stage": "MVP" },
+        { "order": 3, "name": "Efficacy Demonstrated", "evidence_description": "Mid-phase trials demonstrate efficacy.", "objective_signal": "Phase 2 efficacy signal demonstrated.", "funder_stage": "Early Adopters" },
+        { "order": 4, "name": "Confirmatory Evidence", "evidence_description": "Late-phase trials confirm efficacy and safety.", "objective_signal": "Phase 3 confirmatory results.", "funder_stage": "Growth" },
+        { "order": 5, "name": "Regulatory Approval", "evidence_description": "The therapy receives regulatory approval.", "objective_signal": "Regulatory approval obtained.", "funder_stage": "Growth" },
+        { "order": 6, "name": "Commercial Launch", "evidence_description": "The therapy is launched commercially at scale.", "objective_signal": "About $10M+ in revenue from commercial launch.", "funder_stage": "Scale" }
+      ]
+    }
+  ]
+}

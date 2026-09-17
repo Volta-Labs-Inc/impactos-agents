@@ -1,0 +1,117 @@
+{
+  "contract_version": "1.0.0",
+  "generated_from": "baimetrics template-contract-v5.json (structure, vocabularies, Excel validations); mapped to contract/data-contract.json.",
+  "notes": "One export of the direct-beneficiary reporting profile: the ACOA-approved BAI v5 workbook. Each column maps to a data-contract source. Cost of Support is intentionally unmapped (not collected in contract v1; D-05).",
+  "target": {
+    "template_version": "5.0.0",
+    "schema_major": 5,
+    "workbook": "BAI_Metrics_Data_Collection_Template_v5.xlsx"
+  },
+  "sheets": {
+    "Companies": {
+      "grain": "one per company",
+      "columns": [
+        { "column": "Company ID", "source": "company.source_id" },
+        { "column": "Business Name", "source": "company.legal_name" },
+        { "column": "Former Name", "source": "company.former_name" },
+        { "column": "Business Number", "source": "company.business_number" },
+        { "column": "Name of Ultimate Founder", "source": "person.first_name+person.last_name", "transformation": "join_founder_name", "note": "Primary founder via company_person(role=Founder)." },
+        { "column": "Address", "source": "(unmapped)", "unmapped": true, "reason": "Street address is not collected in contract v1." },
+        { "column": "City", "source": "company.city" },
+        { "column": "Province/Territory", "source": "company.province", "vocabulary": "provinces_territories" },
+        { "column": "Phone Number", "source": "person.phone", "transformation": "primary_contact", "note": "Primary contact via company_person(is_primary=true)." },
+        { "column": "Email", "source": "person.email", "transformation": "primary_contact", "note": "Primary contact via company_person(is_primary=true)." },
+        { "column": "Website URL", "source": "company.website" },
+        { "column": "Industry Sector", "source": "company.industry", "vocabulary": "industries", "transformation": "normalize_industries" },
+        { "column": "Underrepresented Group", "source": "person.demographics", "vocabulary": "yes_no_blank", "transformation": "any_demographic_rollup", "note": "True if any person at the company reports a diverse-group membership." },
+        { "column": "Indigenous Peoples", "source": "person.demographics", "vocabulary": "yes_no_blank", "transformation": "demographic_rollup" },
+        { "column": "Black Communities", "source": "person.demographics", "vocabulary": "yes_no_blank", "transformation": "demographic_rollup", "note": "BAI splits Black Communities from Racialized; contract uses the PacifiCan grouping (Racialized), applied via a vocabulary crosswalk." },
+        { "column": "Racialized Communities", "source": "person.demographics", "vocabulary": "yes_no_blank", "transformation": "demographic_rollup" },
+        { "column": "Persons with a Disability", "source": "person.demographics", "vocabulary": "yes_no_blank", "transformation": "demographic_rollup" },
+        { "column": "Official Language Minority Communities", "source": "person.demographics", "vocabulary": "yes_no_blank", "transformation": "demographic_rollup" },
+        { "column": "Youth", "source": "person.demographics", "vocabulary": "yes_no_blank", "transformation": "demographic_rollup" },
+        { "column": "Newcomers to Canada/Immigrants", "source": "person.demographics", "vocabulary": "yes_no_blank", "transformation": "demographic_rollup" },
+        { "column": "2SLGBTQI+", "source": "person.demographics", "vocabulary": "yes_no_blank", "transformation": "demographic_rollup" },
+        { "column": "Women", "source": "person.demographics", "vocabulary": "yes_no_blank", "transformation": "demographic_rollup" },
+        { "column": "Prefer Not to Disclose", "source": "person.demographics", "vocabulary": "yes_no_blank", "transformation": "prefer_not_to_disclose", "note": "Set when a person explicitly declined; never inferred from absence." },
+        { "column": "Company Type", "source": "company.company_type", "vocabulary": "company_types", "transformation": "company_type_crosswalk" }
+      ]
+    },
+    "Company Updates": {
+      "grain": "one per company per dated snapshot",
+      "columns": [
+        { "column": "Update ID", "source": "company_update.source_id" },
+        { "column": "Company ID", "source": "company_update.company_ref" },
+        { "column": "Company Name", "source": "company.legal_name", "transformation": "join_company_name", "note": "Collected beside every update; not persisted separately." },
+        { "column": "Update Date", "source": "company_update.update_date" },
+        { "column": "Support Programs Attended", "source": "membership.cohort_ref", "transformation": "list_programs", "note": "Derived from the company's cohort memberships." },
+        { "column": "Total Venture Capital", "source": "funding_event.amount", "transformation": "sum_cumulative_cad", "note": "funding_type = venture_capital." },
+        { "column": "Total Angel", "source": "funding_event.amount", "transformation": "sum_cumulative_cad", "note": "funding_type = angel." },
+        { "column": "Total Debt", "source": "funding_event.amount", "transformation": "sum_cumulative_cad", "note": "funding_type in (debt, bank_credit)." },
+        { "column": "Total Grants", "source": "funding_event.amount", "transformation": "sum_cumulative_cad", "note": "funding_type = government_grant." },
+        { "column": "Lifetime Revenue", "source": "company_update.lifetime_revenue", "transformation": "money_amount" },
+        { "column": "Revenue Disclosure", "source": "company_update.revenue_disclosure", "vocabulary": "revenue_disclosure" },
+        { "column": "Program", "source": "membership.cohort_ref", "transformation": "primary_program", "note": "Primary program from cohort membership." },
+        { "column": "Stage of Growth", "source": "milestone_position.rung_order", "vocabulary": "stages", "transformation": "funder_stage_from_track", "note": "Derived from track position via tracks.json funder_stage." },
+        { "column": "Current FTEs", "source": "company_update.current_ftes" },
+        { "column": "Cost of Support (CAD)", "source": "(unmapped)", "unmapped": true, "reason": "Cost of support is not collected in contract v1 (derivable only, D-05); left blank." },
+        { "column": "Notes", "source": "company_update.notes" }
+      ]
+    },
+    "Contacts": {
+      "grain": "one per person",
+      "columns": [
+        { "column": "Contact ID", "source": "person.source_id" },
+        { "column": "Company ID", "source": "company_person.company_ref" },
+        { "column": "First Name", "source": "person.first_name" },
+        { "column": "Last Name", "source": "person.last_name" },
+        { "column": "Title/Role", "source": "company_person.role" },
+        { "column": "Email", "source": "person.email" },
+        { "column": "Phone Number", "source": "person.phone" },
+        { "column": "Primary Contact", "source": "company_person.is_primary", "vocabulary": "primary_contact" },
+        { "column": "Notes", "source": "(unmapped)", "unmapped": true, "reason": "No per-contact notes field in contract v1." }
+      ]
+    },
+    "Programs": {
+      "grain": "one per program",
+      "columns": [
+        { "column": "Program ID", "source": "program.source_id" },
+        { "column": "Program Name", "source": "program.name" },
+        { "column": "Program Description", "source": "program.description" },
+        { "column": "Program Type", "source": "program.program_type", "vocabulary": "program_types" },
+        { "column": "Start Date", "source": "program.start_date" },
+        { "column": "End Date", "source": "program.end_date" },
+        { "column": "Status", "source": "program.status", "vocabulary": "program_statuses" },
+        { "column": "Notes", "source": "(unmapped)", "unmapped": true, "reason": "No per-program notes field in contract v1." }
+      ]
+    },
+    "Program Cohorts": {
+      "grain": "one per company enrolled in a cohort",
+      "columns": [
+        { "column": "Cohort ID", "source": "membership.source_id" },
+        { "column": "Program ID", "source": "cohort.program_ref", "transformation": "via_membership_cohort" },
+        { "column": "Company ID", "source": "membership.company_ref" },
+        { "column": "Cohort Name", "source": "cohort.cohort_name", "transformation": "via_membership_cohort" },
+        { "column": "Start Date", "source": "cohort.start_date", "transformation": "via_membership_cohort" },
+        { "column": "End Date", "source": "cohort.end_date", "transformation": "via_membership_cohort" },
+        { "column": "Company Status", "source": "membership.status", "vocabulary": "company_statuses" },
+        { "column": "Notes", "source": "(unmapped)", "unmapped": true, "reason": "No per-enrollment notes field in contract v1." }
+      ]
+    }
+  },
+  "vocabularies": {
+    "stages": ["Idea", "MVP", "Early Adopters", "Growth", "Scale"],
+    "company_types": ["Startup", "SME", "Industry Partner", "Ecosystem Partner", "Academia", "Government"],
+    "program_types": ["Accelerator", "Incubator", "Cohort", "Workshop", "Event", "Mentorship", "Other"],
+    "program_statuses": ["Active", "Completed", "Planned"],
+    "company_statuses": ["Active", "Graduated", "Withdrawn"],
+    "revenue_disclosure": ["Disclosed", "Not Disclosed", "Pre-revenue"],
+    "yes_no_blank": ["Yes", "No", ""],
+    "primary_contact": ["Yes", "No", ""],
+    "provinces_territories": ["NS", "NB", "PE", "NL", "QC", "ON", "MB", "SK", "AB", "BC", "YT", "NT", "NU"]
+  },
+  "excel_validations": [
+    { "sheet": "Companies", "field": "Company Type", "range": "X2:X1000", "vocabulary": "company_types" },
+    { "sheet": "Company Updates", "field": "Stage of Growth", "range": "M2:M5001", "vocabulary": "stages" }
+  ]
+}

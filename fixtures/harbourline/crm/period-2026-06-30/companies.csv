@@ -1,0 +1,8 @@
+﻿record_id,company_name,contact_first_name,contact_last_name,contact_email,employees,stage,city,province,dg_women,dg_indigenous,dg_youth,dg_immigrants,dg_racialized,dg_2slgbtq,dg_persons_with_disabilities,dg_official_language_minority
+HL-001,Tidewater Robotics,Ava,Nguyen,ava.nguyen@example.org,14,Growth,Halifax,NS,Yes,,,,,,,
+HL-002,Beacon Health Systems,Liam,Okafor,liam.okafor@example.org,8,Growth,Moncton,NB,,,,Yes,,,,
+HL-003,Saltmarsh Analytics,Priya,Sharma,priya.sharma@example.org,9,Early Adopters,Charlottetown,PE,Yes,,Yes,,,,,
+HL-004,Nectar Foodworks,Diego,Alvarez,diego.alvarez@example.org,18,Growth,St. John's,NL,,,,,Yes,,,
+HL-005,Kelp Bioscience,Mei,Tanaka,mei.tanaka@example.org,3,MVP,Halifax,NS,,,,Yes,,,,
+HL-007,Harbour Freight Labs,Sofia,Martins,sofia.martins@example.org,6,Idea,Sydney,NS,,,Yes,,,,,
+HL-008,Tidewater Robotics,Omar,Haddad,omar.haddad@example.org,4,Idea,Dartmouth,NS,,,,,,,,

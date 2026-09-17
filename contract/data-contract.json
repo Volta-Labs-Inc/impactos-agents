@@ -1,0 +1,388 @@
+{
+  "contract_version": "1.0.0",
+  "generated_from": "docs/estate-analysis-2026-09-16.md (decisions D-01, D-05, D-07, D-16, D-17, D-18); baimetrics template-contract-v5.json; association-rules.md",
+  "notes": "Storage-independent impactOS data contract. Facts live at their natural grain with a source identifier and a personal/financial classification. Demographics are recorded per person, never per company. Every money amount carries its own currency. Identity always requires a trustworthy source identifier; a display name never authorises a merge.",
+  "field_classifications": [
+    "identifier",
+    "descriptive",
+    "operational",
+    "metric",
+    "financial",
+    "personal",
+    "demographic",
+    "stage"
+  ],
+  "value_types": {
+    "money": {
+      "kind": "object",
+      "required_keys": ["amount", "currency"],
+      "shape": {
+        "amount": "number|null",
+        "currency": "string (ISO 4217, e.g. CAD)"
+      },
+      "note": "A money field is always an object with an amount and a currency. A bare number is not a valid money value; see contract/schema/money.schema.json."
+    }
+  },
+  "vocabularies": {
+    "company_type": [
+      "Startup",
+      "SME",
+      "Investment Fund",
+      "Industry Partner",
+      "Ecosystem Partner",
+      "Service Provider",
+      "Academia",
+      "Government",
+      "Non-Profit",
+      "Large Corporation"
+    ],
+    "program_type": [
+      "Accelerator",
+      "Incubator",
+      "Cohort",
+      "Workshop",
+      "Event",
+      "Mentorship",
+      "Other"
+    ],
+    "program_status": ["Active", "Completed", "Planned"],
+    "membership_status": ["Active", "Graduated", "Withdrawn"],
+    "funding_type": [
+      "bank_credit",
+      "personal",
+      "friends_family",
+      "government_loan",
+      "government_grant",
+      "angel",
+      "venture_capital",
+      "crowdfunding",
+      "debt",
+      "other"
+    ],
+    "interaction_type": [
+      "email",
+      "meeting",
+      "call",
+      "text_message",
+      "coaching_session",
+      "workshop",
+      "note"
+    ],
+    "revenue_disclosure": ["Disclosed", "Not Disclosed", "Pre-revenue"],
+    "milestone_status": ["not_started", "in_progress", "achieved", "verified"],
+    "submission_channel": ["hosted_form", "email", "skill", "cli"],
+    "submission_status": ["queued", "parsed", "accepted", "rejected"],
+    "diverse_groups": [
+      "Women",
+      "Indigenous",
+      "Racialized",
+      "Persons with disabilities",
+      "2SLGBTQ+",
+      "Youth",
+      "Immigrants",
+      "Official Language Minority Communities"
+    ]
+  },
+  "data_types": {
+    "organisation": {
+      "grain": "one row: the operator (single-organisation deployment, D-01)",
+      "description": "The incubator or accelerator running this deployment. There is exactly one.",
+      "identity_rule": {
+        "source_identifier_required": true,
+        "name_derived_forbidden": true,
+        "keys": ["source_system", "source_id"],
+        "description": "Identity is the operator's own stable identifier. Never derived from the organisation name."
+      },
+      "fields": {
+        "source_system": { "type": "string", "required": true, "classification": "identifier" },
+        "source_id": { "type": "string", "required": true, "unique": true, "classification": "identifier" },
+        "legal_name": { "type": "string", "required": true, "classification": "descriptive" },
+        "operating_name": { "type": "string", "required": false, "classification": "descriptive" },
+        "website": { "type": "url", "required": false, "classification": "descriptive" },
+        "country": { "type": "string", "required": false, "classification": "operational" }
+      }
+    },
+    "company": {
+      "grain": "one row per supported company",
+      "description": "A direct-beneficiary company. Demographics are never stored here; they belong on the person.",
+      "identity_rule": {
+        "source_identifier_required": true,
+        "name_derived_forbidden": true,
+        "keys": ["source_system", "source_id"],
+        "merge_evidence": ["source_id", "business_number", "verified_domain"],
+        "description": "May merge only on a stable source id, business number, or verified domain. Name similarity alone never authorises a merge (association-rules.md)."
+      },
+      "fields": {
+        "source_system": { "type": "string", "required": true, "classification": "identifier" },
+        "source_id": { "type": "string", "required": true, "unique": true, "classification": "identifier" },
+        "legal_name": { "type": "string", "required": true, "classification": "descriptive" },
+        "operating_name": { "type": "string", "required": false, "classification": "descriptive" },
+        "former_name": { "type": "string", "required": false, "classification": "descriptive" },
+        "business_number": { "type": "string", "required": false, "classification": "identifier" },
+        "verified_domain": { "type": "string", "required": false, "classification": "identifier" },
+        "industry": { "type": "string", "required": false, "classification": "descriptive" },
+        "company_type": { "type": "single_select", "vocabulary": "company_type", "required": false, "classification": "descriptive" },
+        "city": { "type": "string", "required": false, "classification": "descriptive" },
+        "province": { "type": "string", "required": false, "classification": "operational" },
+        "country": { "type": "string", "required": false, "classification": "operational" },
+        "website": { "type": "url", "required": false, "classification": "descriptive" },
+        "year_incorporated": { "type": "year", "required": false, "classification": "operational" },
+        "year_of_first_sale": { "type": "year", "required": false, "classification": "operational" }
+      }
+    },
+    "person": {
+      "grain": "one row per individual",
+      "description": "A person associated with a company. Diverse-group membership is recorded here (per person), using the PacifiCan list.",
+      "identity_rule": {
+        "source_identifier_required": true,
+        "name_derived_forbidden": true,
+        "keys": ["source_system", "source_id"],
+        "merge_evidence": ["source_id", "email"],
+        "description": "Identity uses email when available, otherwise company plus normalised name and role; a source identifier is always required. The same email across companies stays a separate association, flagged for review, never auto-merged."
+      },
+      "fields": {
+        "source_system": { "type": "string", "required": true, "classification": "identifier" },
+        "source_id": { "type": "string", "required": true, "unique": true, "classification": "identifier" },
+        "first_name": { "type": "string", "required": false, "classification": "personal" },
+        "last_name": { "type": "string", "required": false, "classification": "personal" },
+        "email": { "type": "email", "required": false, "classification": "personal" },
+        "phone": { "type": "phone", "required": false, "classification": "personal" },
+        "title": { "type": "string", "required": false, "classification": "descriptive" },
+        "demographics": { "type": "multi_select", "vocabulary": "diverse_groups", "required": false, "classification": "demographic", "description": "PacifiCan diverse groups; self-identified; never inferred (D-18)." }
+      }
+    },
+    "company_person": {
+      "grain": "one row per person's role at a company",
+      "description": "The single company-to-person join: role and tenure.",
+      "identity_rule": {
+        "source_identifier_required": true,
+        "name_derived_forbidden": true,
+        "keys": ["company_ref", "person_ref", "role"],
+        "description": "Identity is the company, the person and the role. Both refs carry source identifiers; no name-derived linkage."
+      },
+      "fields": {
+        "source_system": { "type": "string", "required": true, "classification": "identifier" },
+        "source_id": { "type": "string", "required": true, "unique": true, "classification": "identifier" },
+        "company_ref": { "type": "ref", "ref": "company", "required": true, "classification": "operational" },
+        "person_ref": { "type": "ref", "ref": "person", "required": true, "classification": "operational" },
+        "role": { "type": "string", "required": false, "classification": "descriptive" },
+        "is_primary": { "type": "boolean", "required": false, "classification": "descriptive" },
+        "start_date": { "type": "date", "required": false, "classification": "operational" },
+        "end_date": { "type": "date", "required": false, "classification": "operational" }
+      }
+    },
+    "program": {
+      "grain": "one row per program",
+      "description": "A program the operator runs (accelerator, cohort, workshop, etc.).",
+      "identity_rule": {
+        "source_identifier_required": true,
+        "name_derived_forbidden": true,
+        "keys": ["source_system", "source_id"],
+        "description": "Identity is the operator plus the program's source identifier; normalised name is a match hint only."
+      },
+      "fields": {
+        "source_system": { "type": "string", "required": true, "classification": "identifier" },
+        "source_id": { "type": "string", "required": true, "unique": true, "classification": "identifier" },
+        "name": { "type": "string", "required": true, "classification": "descriptive" },
+        "description": { "type": "text", "required": false, "classification": "descriptive" },
+        "program_type": { "type": "single_select", "vocabulary": "program_type", "required": false, "classification": "descriptive" },
+        "start_date": { "type": "date", "required": false, "classification": "operational" },
+        "end_date": { "type": "date", "required": false, "classification": "operational" },
+        "status": { "type": "single_select", "vocabulary": "program_status", "required": false, "classification": "operational" }
+      }
+    },
+    "cohort": {
+      "grain": "one row per cohort of a program",
+      "description": "A dated instance of a program.",
+      "identity_rule": {
+        "source_identifier_required": true,
+        "name_derived_forbidden": true,
+        "keys": ["program_ref", "cohort_name", "start_date"],
+        "description": "Identity is program, cohort name and start date (association-rules.md); program_ref carries a source identifier."
+      },
+      "fields": {
+        "source_system": { "type": "string", "required": true, "classification": "identifier" },
+        "source_id": { "type": "string", "required": true, "unique": true, "classification": "identifier" },
+        "program_ref": { "type": "ref", "ref": "program", "required": true, "classification": "operational" },
+        "cohort_name": { "type": "string", "required": false, "classification": "descriptive" },
+        "start_date": { "type": "date", "required": true, "classification": "operational" },
+        "end_date": { "type": "date", "required": false, "classification": "operational" }
+      }
+    },
+    "membership": {
+      "grain": "one row per company enrolled in a cohort",
+      "description": "A company's enrollment in a cohort. Enrollment, not update text, controls participation reporting.",
+      "identity_rule": {
+        "source_identifier_required": true,
+        "name_derived_forbidden": true,
+        "keys": ["cohort_ref", "company_ref"],
+        "description": "Identity is the cohort and the company; both refs carry source identifiers."
+      },
+      "fields": {
+        "source_system": { "type": "string", "required": true, "classification": "identifier" },
+        "source_id": { "type": "string", "required": true, "unique": true, "classification": "identifier" },
+        "cohort_ref": { "type": "ref", "ref": "cohort", "required": true, "classification": "operational" },
+        "company_ref": { "type": "ref", "ref": "company", "required": true, "classification": "operational" },
+        "status": { "type": "single_select", "vocabulary": "membership_status", "required": false, "classification": "operational" },
+        "start_date": { "type": "date", "required": false, "classification": "operational" },
+        "end_date": { "type": "date", "required": false, "classification": "operational" }
+      }
+    },
+    "interaction": {
+      "grain": "one row per interaction (email, meeting, call, coaching session, ...)",
+      "description": "A dated contact between parties. Meetings are an interaction type (D-09); support time is captured here for coaching-hours reporting.",
+      "identity_rule": {
+        "source_identifier_required": true,
+        "name_derived_forbidden": true,
+        "keys": ["source_system", "source_meeting_id"],
+        "description": "Dedup on (source_system, source_meeting_id). No name-derived identity."
+      },
+      "fields": {
+        "source_system": { "type": "string", "required": true, "classification": "identifier" },
+        "source_id": { "type": "string", "required": true, "unique": true, "classification": "identifier" },
+        "source_meeting_id": { "type": "string", "required": false, "classification": "identifier" },
+        "interaction_type": { "type": "single_select", "vocabulary": "interaction_type", "required": true, "classification": "operational" },
+        "occurred_at": { "type": "date", "required": true, "classification": "operational" },
+        "company_ref": { "type": "ref", "ref": "company", "required": false, "classification": "operational" },
+        "subject": { "type": "string", "required": false, "classification": "descriptive" },
+        "duration_hours": { "type": "number", "required": false, "classification": "metric", "metric_semantics": "point_in_time", "description": "Supports RDA/CED coaching-and-mentoring hours per business." },
+        "notes": { "type": "text", "required": false, "classification": "descriptive" }
+      }
+    },
+    "company_update": {
+      "grain": "one row per company per dated snapshot",
+      "description": "A dated set of company facts. Employee counts, revenue and patents live here. Cost of support is intentionally absent (derivable only; D-05).",
+      "identity_rule": {
+        "source_identifier_required": true,
+        "name_derived_forbidden": true,
+        "keys": ["company_ref", "update_date"],
+        "description": "Identity is the company and the update date, plus the strongest source update identifier; company_ref carries a source identifier."
+      },
+      "fields": {
+        "source_system": { "type": "string", "required": true, "classification": "identifier" },
+        "source_id": { "type": "string", "required": true, "unique": true, "classification": "identifier" },
+        "company_ref": { "type": "ref", "ref": "company", "required": true, "classification": "operational" },
+        "update_date": { "type": "date", "required": true, "classification": "operational" },
+        "current_ftes": { "type": "number", "required": false, "classification": "metric", "metric_semantics": "point_in_time" },
+        "ft_employees_canada": { "type": "integer", "required": false, "classification": "metric", "metric_semantics": "count" },
+        "pt_employees_canada": { "type": "integer", "required": false, "classification": "metric", "metric_semantics": "count" },
+        "employees_outside_canada": { "type": "integer", "required": false, "classification": "metric", "metric_semantics": "count" },
+        "annual_revenue": { "type": "money", "required": false, "classification": "financial", "metric_semantics": "period_cad" },
+        "export_revenue": { "type": "money", "required": false, "classification": "financial", "metric_semantics": "period_cad" },
+        "lifetime_revenue": { "type": "money", "required": false, "classification": "financial", "metric_semantics": "cumulative_cad" },
+        "revenue_disclosure": { "type": "single_select", "vocabulary": "revenue_disclosure", "required": false, "classification": "operational" },
+        "patents_applied": { "type": "integer", "required": false, "classification": "metric", "metric_semantics": "count" },
+        "patents_granted": { "type": "integer", "required": false, "classification": "metric", "metric_semantics": "count" },
+        "nps": { "type": "number", "required": false, "classification": "metric", "metric_semantics": "point_in_time" },
+        "impact_rating": { "type": "number", "required": false, "classification": "metric", "metric_semantics": "point_in_time" },
+        "notes": { "type": "text", "required": false, "classification": "descriptive" }
+      }
+    },
+    "funding_event": {
+      "grain": "one row per funding event (round)",
+      "description": "A single funding event; BAI cumulative totals are derived by summing to date (D-16).",
+      "identity_rule": {
+        "source_identifier_required": true,
+        "name_derived_forbidden": true,
+        "keys": ["source_system", "source_id"],
+        "description": "Identity is the event's source identifier. Amounts are never split from a generic total."
+      },
+      "fields": {
+        "source_system": { "type": "string", "required": true, "classification": "identifier" },
+        "source_id": { "type": "string", "required": true, "unique": true, "classification": "identifier" },
+        "company_ref": { "type": "ref", "ref": "company", "required": true, "classification": "operational" },
+        "funding_type": { "type": "single_select", "vocabulary": "funding_type", "required": true, "classification": "financial" },
+        "amount": { "type": "money", "required": false, "classification": "financial", "metric_semantics": "period_cad" },
+        "source_name": { "type": "string", "required": false, "classification": "descriptive" },
+        "close_date": { "type": "date", "required": false, "classification": "operational" },
+        "round_name": { "type": "string", "required": false, "classification": "descriptive" },
+        "grant_program_name": { "type": "string", "required": false, "classification": "descriptive" },
+        "is_active": { "type": "boolean", "required": false, "classification": "operational" }
+      }
+    },
+    "team_member_period": {
+      "grain": "one row per company per person per month",
+      "description": "Roster with hours; FTEs derive from the sum of hours or active headcount (D-16).",
+      "identity_rule": {
+        "source_identifier_required": true,
+        "name_derived_forbidden": true,
+        "keys": ["company_ref", "person_ref", "period_month"],
+        "description": "Identity is company, person and month; both refs carry source identifiers."
+      },
+      "fields": {
+        "source_system": { "type": "string", "required": true, "classification": "identifier" },
+        "source_id": { "type": "string", "required": true, "unique": true, "classification": "identifier" },
+        "company_ref": { "type": "ref", "ref": "company", "required": true, "classification": "operational" },
+        "person_ref": { "type": "ref", "ref": "person", "required": true, "classification": "operational" },
+        "period_month": { "type": "string", "required": true, "classification": "operational" },
+        "hours_per_week": { "type": "number", "required": false, "classification": "metric", "metric_semantics": "point_in_time" },
+        "is_founder": { "type": "boolean", "required": false, "classification": "descriptive" },
+        "is_active": { "type": "boolean", "required": false, "classification": "operational" },
+        "has_product_skill": { "type": "boolean", "required": false, "classification": "descriptive" },
+        "has_sales_skill": { "type": "boolean", "required": false, "classification": "descriptive" }
+      }
+    },
+    "milestone_position": {
+      "grain": "one row per company per dated milestone position",
+      "description": "Where a company sits on its track, as dated history (D-07). The funder stage is derived via tracks.json.",
+      "identity_rule": {
+        "source_identifier_required": true,
+        "name_derived_forbidden": true,
+        "keys": ["company_ref", "track", "as_of_date"],
+        "description": "Identity is company, track and date; company_ref carries a source identifier."
+      },
+      "fields": {
+        "source_system": { "type": "string", "required": true, "classification": "identifier" },
+        "source_id": { "type": "string", "required": true, "unique": true, "classification": "identifier" },
+        "company_ref": { "type": "ref", "ref": "company", "required": true, "classification": "operational" },
+        "track": { "type": "string", "required": true, "classification": "stage", "description": "Track slug from tracks.json." },
+        "rung_order": { "type": "integer", "required": true, "classification": "stage" },
+        "status": { "type": "single_select", "vocabulary": "milestone_status", "required": false, "classification": "stage" },
+        "as_of_date": { "type": "date", "required": true, "classification": "operational" },
+        "is_verified": { "type": "boolean", "required": false, "classification": "operational" },
+        "notes": { "type": "text", "required": false, "classification": "descriptive" }
+      }
+    },
+    "milestone_target": {
+      "grain": "one row per company per track per target set",
+      "description": "The forward-looking objective a coach sets, kept separate from the achieved position (D-07).",
+      "identity_rule": {
+        "source_identifier_required": true,
+        "name_derived_forbidden": true,
+        "keys": ["company_ref", "track", "set_at"],
+        "description": "Identity is company, track and when the target was set; company_ref carries a source identifier."
+      },
+      "fields": {
+        "source_system": { "type": "string", "required": true, "classification": "identifier" },
+        "source_id": { "type": "string", "required": true, "unique": true, "classification": "identifier" },
+        "company_ref": { "type": "ref", "ref": "company", "required": true, "classification": "operational" },
+        "track": { "type": "string", "required": true, "classification": "stage" },
+        "target_rung_order": { "type": "integer", "required": true, "classification": "stage" },
+        "objective_signal": { "type": "text", "required": false, "classification": "descriptive" },
+        "set_by": { "type": "string", "required": false, "classification": "operational" },
+        "set_at": { "type": "date", "required": true, "classification": "operational" }
+      }
+    },
+    "submission": {
+      "grain": "one row per founder submission",
+      "description": "Founder-reported input landing in the inbox; parsed then accepted per acceptance-rules.json (D-17). Founders never write fact tables directly.",
+      "identity_rule": {
+        "source_identifier_required": true,
+        "name_derived_forbidden": true,
+        "keys": ["source_system", "source_id"],
+        "description": "Identity is the submission's source identifier."
+      },
+      "fields": {
+        "source_system": { "type": "string", "required": true, "classification": "identifier" },
+        "source_id": { "type": "string", "required": true, "unique": true, "classification": "identifier" },
+        "company_ref": { "type": "ref", "ref": "company", "required": false, "classification": "operational" },
+        "submitted_by_person_ref": { "type": "ref", "ref": "person", "required": false, "classification": "personal" },
+        "channel": { "type": "single_select", "vocabulary": "submission_channel", "required": true, "classification": "operational" },
+        "submitted_at": { "type": "date", "required": true, "classification": "operational" },
+        "status": { "type": "single_select", "vocabulary": "submission_status", "required": true, "classification": "operational" },
+        "confidence": { "type": "number", "required": false, "classification": "metric", "metric_semantics": "point_in_time" },
+        "raw_payload_ref": { "type": "string", "required": false, "classification": "operational" }
+      }
+    }
+  }
+}
