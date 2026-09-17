@@ -70,7 +70,6 @@ around. None is a defect in the tool.
 | Second run reports differences | Met (49 changed / 31 new / 146 missing-required) |
 | Reporting profile + BAI v5 export produced, every unfilled field explained | Met (3/29 populated, 26 gaps named) |
 | Identical outputs on re-export (no hand edits) | Met (byte-identical four-file set) |
-| Same inputs and mappings produce the same output in a second harness | **Pending** — run the same period once in Codex or Cursor and compare the four-file hashes above |
+| Same inputs and mappings produce the same output in a second harness | **Met** — Cursor (2026-09-17) replayed period `2026-05-18` from the same sources and company-only mapping; all four sha1s matched the table above |
 
-The only unmet clause is the cross-harness leg, which requires a second AI harness a person
-drives. Determinism (same inputs and confirmed mappings → identical bytes) is proven above.
+Cross-harness leg closed in Cursor. Determinism (same inputs and confirmed mappings → identical bytes) is proven in two harnesses.
