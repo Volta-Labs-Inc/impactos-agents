@@ -22,7 +22,13 @@ TEXT_SUFFIXES = {
     ".toml", ".ini", ".cfg", ".env", ".sh", ".cmd", ".bat", ".xml", ".html",
 }
 XLSX_SUFFIXES = {".xlsx", ".xlsm"}
-SKIP_PREFIXES = ("vendor/", ".git/")
+# Third-party bundles are skipped like vendored code. renderer/dist/index.html is
+# a generated, committed A2UI/React build (no personal data: the renderer loads
+# briefs from a user-picked file at view time, nothing is bundled in). Its
+# minified code contains digit runs that would otherwise read as false-positive
+# "phone numbers"; the authored renderer source under renderer/src is the thing
+# to review.
+SKIP_PREFIXES = ("vendor/", ".git/", "renderer/dist/")
 
 ALLOWED_EMAIL_DOMAIN = "@example.org"
 
