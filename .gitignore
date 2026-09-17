@@ -5,6 +5,9 @@ __pycache__/
 workspace/
 exports/
 reports/
+# The versioned contract export mappings are tracked (distinct from generated exports/)
+!contract/exports/
+!contract/exports/**
 
 # Local config (private)
 .mcp.json

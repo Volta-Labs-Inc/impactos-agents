@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "tracks.schema.json",
+  "title": "impactOS milestone tracks",
+  "type": "object",
+  "required": ["contract_version", "funder_stage_vocabulary", "tracks"],
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "generated_from": { "type": "string" },
+    "notes": { "type": "string" },
+    "funder_stage_vocabulary": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string" }
+    },
+    "tracks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["slug", "name", "rungs"],
+        "additionalProperties": false,
+        "properties": {
+          "slug": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "rungs": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["order", "name", "evidence_description", "objective_signal", "funder_stage"],
+              "additionalProperties": false,
+              "properties": {
+                "order": { "type": "integer", "minimum": 1 },
+                "name": { "type": "string" },
+                "evidence_description": { "type": "string", "minLength": 1 },
+                "objective_signal": { "type": "string", "minLength": 1 },
+                "funder_stage": { "type": "string", "minLength": 1 }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

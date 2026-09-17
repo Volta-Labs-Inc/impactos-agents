@@ -1,0 +1,37 @@
+{
+  "contract_version": "1.0.0",
+  "generated_at": "2026-09-16T00:00:00Z",
+  "notes": "sha256 of each contract file; regenerate with tools/release_manifest.py generate.",
+  "files": [
+    {
+      "path": "VERSION",
+      "sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+      "bytes": 6
+    },
+    {
+      "path": "data-contract.json",
+      "sha256": "17318264c8dd354d6dd9cff622fe8f279fbc2e2fc13832acbc44e2708f6c28fb",
+      "bytes": 24040
+    },
+    {
+      "path": "tracks.json",
+      "sha256": "9540d0fa2d4307fe35f547da7ae52b4c4726712ff82f338562df04cbbe0d2e80",
+      "bytes": 7561
+    },
+    {
+      "path": "reporting-profile.json",
+      "sha256": "0890792e885c7ae23d3ba4d0c8e7c73685a5d69a10b5bff0077d88813f819ec4",
+      "bytes": 5724
+    },
+    {
+      "path": "acceptance-rules.json",
+      "sha256": "59d3a7df3bc6783e39a8d79953829773f59f15ab0bc761070ec42eb9ae11ab5e",
+      "bytes": 1504
+    },
+    {
+      "path": "exports/bai-template-v5.json",
+      "sha256": "313b727de10cdba0c20a639c97f7174578c07ea1d168980cbcce27b956ea7342",
+      "bytes": 9738
+    }
+  ]
+}

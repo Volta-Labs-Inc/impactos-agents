@@ -1,0 +1,43 @@
+{
+  "contract_version": "1.0.0",
+  "profile_name": "Direct-beneficiary reporting profile",
+  "generated_from": "ISED BAI PMF questionnaire; CED 2024-2028 incubator/accelerator guide; PacifiCan funding-program glossary; BAI template v5 (D-18). See docs/reporting-anchors.md.",
+  "notes": "The union of the cited public frameworks, expressed as fields the impactOS data contract can populate. The BAI template is one export of this profile; organisations may extend it. This is one iteration, a starting point.",
+  "anchors": [
+    "ISED BAI PMF",
+    "CED 2024-2028",
+    "PacifiCan glossary",
+    "BAI Template v5"
+  ],
+  "fields": [
+    { "key": "legal_name", "label": "Company legal name", "anchor": "ISED BAI PMF", "contract_path": "company.legal_name" },
+    { "key": "business_number", "label": "CRA business number", "anchor": "ISED BAI PMF", "contract_path": "company.business_number" },
+    { "key": "year_incorporated", "label": "Year incorporated", "anchor": "ISED BAI PMF", "contract_path": "company.year_incorporated" },
+    { "key": "year_of_first_sale", "label": "Year of first sale", "anchor": "ISED BAI PMF", "contract_path": "company.year_of_first_sale" },
+    { "key": "industry", "label": "Industry / vertical", "anchor": "ISED BAI PMF", "contract_path": "company.industry" },
+    { "key": "company_type", "label": "Company type", "anchor": "BAI Template v5", "contract_path": "company.company_type" },
+    { "key": "company_stage", "label": "Stage of growth", "anchor": "ISED BAI PMF", "contract_path": "milestone_position.rung_order", "derivation": "Company position on its track, mapped to the funder stage via tracks.json funder_stage." },
+    { "key": "founder_demographics", "label": "Founder counts by demographic", "anchor": "ISED BAI PMF", "contract_path": "person.demographics", "derivation": "Counted per person and rolled up per company; never inferred." },
+    { "key": "diverse_groups", "label": "Diverse-group membership", "anchor": "PacifiCan glossary", "contract_path": "person.demographics", "derivation": "PacifiCan diverse groups, recorded per person." },
+    { "key": "employees_ft_canada", "label": "Full-time employees in Canada", "anchor": "ISED BAI PMF", "contract_path": "company_update.ft_employees_canada" },
+    { "key": "employees_pt_canada", "label": "Part-time employees in Canada", "anchor": "ISED BAI PMF", "contract_path": "company_update.pt_employees_canada" },
+    { "key": "employees_outside_canada", "label": "Employees outside Canada", "anchor": "ISED BAI PMF", "contract_path": "company_update.employees_outside_canada" },
+    { "key": "annual_revenue", "label": "Annual revenue", "anchor": "ISED BAI PMF", "contract_path": "company_update.annual_revenue" },
+    { "key": "export_revenue", "label": "Export revenue", "anchor": "ISED BAI PMF", "contract_path": "company_update.export_revenue" },
+    { "key": "revenue_disclosure", "label": "Revenue disclosure", "anchor": "BAI Template v5", "contract_path": "company_update.revenue_disclosure" },
+    { "key": "financing_by_source", "label": "Financing by source", "anchor": "ISED BAI PMF", "contract_path": "funding_event.amount", "derivation": "Grouped by funding_event.funding_type." },
+    { "key": "patents_applied", "label": "Patents applied", "anchor": "ISED BAI PMF", "contract_path": "company_update.patents_applied" },
+    { "key": "patents_granted", "label": "Patents granted", "anchor": "ISED BAI PMF", "contract_path": "company_update.patents_granted" },
+    { "key": "nps", "label": "Net promoter score", "anchor": "ISED BAI PMF", "contract_path": "company_update.nps" },
+    { "key": "impact_rating", "label": "Impact rating", "anchor": "ISED BAI PMF", "contract_path": "company_update.impact_rating" },
+    { "key": "support_programs_attended", "label": "Support programs attended", "anchor": "BAI Template v5", "contract_path": "membership.cohort_ref", "derivation": "Derived from a company's cohort memberships." },
+    { "key": "businesses_assisted", "label": "Businesses assisted", "anchor": "CED 2024-2028", "contract_path": "derived:count(company with a membership)", "derivation": "Distinct companies with at least one cohort membership in the reporting period." },
+    { "key": "coaching_hours_per_business", "label": "Average coaching/mentoring hours per business", "anchor": "CED 2024-2028", "contract_path": "interaction.duration_hours", "derivation": "Sum of coaching-session interaction hours divided by businesses assisted." },
+    { "key": "jobs_created", "label": "Jobs created", "anchor": "CED 2024-2028", "contract_path": "company_update.current_ftes", "derivation": "FTEs added over the period, per PacifiCan FTE definition." },
+    { "key": "jobs_maintained", "label": "Jobs maintained", "anchor": "PacifiCan glossary", "contract_path": "team_member_period.is_active", "derivation": "FTEs that would be lost without the project (PacifiCan definition of maintained)." },
+    { "key": "total_sales", "label": "Total sales", "anchor": "CED 2024-2028", "contract_path": "company_update.lifetime_revenue" },
+    { "key": "total_funding_received", "label": "Total funding received", "anchor": "CED 2024-2028", "contract_path": "funding_event.amount", "derivation": "Sum of funding_event amounts to date." },
+    { "key": "avg_funding_received", "label": "Average funding received", "anchor": "CED 2024-2028", "contract_path": "derived:total_funding_received / businesses_assisted", "derivation": "Total funding received divided by businesses assisted." },
+    { "key": "survival_rate", "label": "Survival rate", "anchor": "CED 2024-2028", "contract_path": "derived:active companies over time", "derivation": "Share of assisted companies still active after a defined interval." }
+  ]
+}

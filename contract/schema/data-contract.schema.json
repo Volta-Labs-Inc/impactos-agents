@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "data-contract.schema.json",
+  "title": "impactOS data contract",
+  "type": "object",
+  "required": [
+    "contract_version",
+    "generated_from",
+    "field_classifications",
+    "value_types",
+    "vocabularies",
+    "data_types"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "contract_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "generated_from": { "type": "string" },
+    "notes": { "type": "string" },
+    "field_classifications": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "identifier",
+          "descriptive",
+          "operational",
+          "metric",
+          "financial",
+          "personal",
+          "demographic",
+          "stage"
+        ]
+      }
+    },
+    "value_types": {
+      "type": "object",
+      "required": ["money"],
+      "properties": {
+        "money": {
+          "type": "object",
+          "required": ["kind", "required_keys", "shape"],
+          "properties": {
+            "kind": { "const": "object" },
+            "required_keys": {
+              "type": "array",
+              "items": { "type": "string" },
+              "minItems": 2,
+              "contains": { "enum": ["amount", "currency"] }
+            },
+            "shape": {
+              "type": "object",
+              "required": ["amount", "currency"],
+              "additionalProperties": false,
+              "properties": {
+                "amount": { "type": "string" },
+                "currency": { "type": "string" }
+              }
+            },
+            "note": { "type": "string" }
+          }
+        }
+      }
+    },
+    "vocabularies": {
+      "type": "object",
+      "required": [
+        "company_type",
+        "program_type",
+        "membership_status",
+        "funding_type",
+        "interaction_type",
+        "diverse_groups"
+      ],
+      "additionalProperties": {
+        "type": "array",
+        "items": { "type": "string" },
+        "minItems": 1,
+        "uniqueItems": true
+      }
+    },
+    "data_types": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": { "$ref": "#/$defs/data_type" }
+    }
+  },
+  "$defs": {
+    "identity_rule": {
+      "type": "object",
+      "required": ["source_identifier_required", "name_derived_forbidden", "keys", "description"],
+      "additionalProperties": false,
+      "properties": {
+        "source_identifier_required": {
+          "const": true,
+          "description": "A trustworthy source identifier is always required. This is not optional in any data type."
+        },
+        "name_derived_forbidden": {
+          "const": true,
+          "description": "An identity may never be derived from a display name alone. Name similarity never authorises a merge."
+        },
+        "keys": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" },
+          "description": "The ordered fields that establish identity. The first key is always a source identifier."
+        },
+        "merge_evidence": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "description": { "type": "string" }
+      }
+    },
+    "field": {
+      "type": "object",
+      "required": ["type", "required", "classification"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "string",
+            "text",
+            "integer",
+            "number",
+            "boolean",
+            "date",
+            "year",
+            "email",
+            "url",
+            "phone",
+            "money",
+            "single_select",
+            "multi_select",
+            "ref"
+          ]
+        },
+        "required": { "type": "boolean" },
+        "classification": {
+          "type": "string",
+          "enum": [
+            "identifier",
+            "descriptive",
+            "operational",
+            "metric",
+            "financial",
+            "personal",
+            "demographic",
+            "stage"
+          ]
+        },
+        "vocabulary": { "type": "string" },
+        "ref": { "type": "string" },
+        "unique": { "type": "boolean" },
+        "metric_semantics": {
+          "type": "string",
+          "enum": ["cumulative_cad", "point_in_time", "period_cad", "count"]
+        },
+        "description": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "type": { "const": "single_select" } }, "required": ["type"] },
+          "then": { "required": ["vocabulary"] }
+        },
+        {
+          "if": { "properties": { "type": { "const": "multi_select" } }, "required": ["type"] },
+          "then": { "required": ["vocabulary"] }
+        },
+        {
+          "if": { "properties": { "type": { "const": "ref" } }, "required": ["type"] },
+          "then": { "required": ["ref"] }
+        }
+      ]
+    },
+    "data_type": {
+      "type": "object",
+      "required": ["grain", "identity_rule", "fields"],
+      "additionalProperties": false,
+      "properties": {
+        "grain": { "type": "string" },
+        "description": { "type": "string" },
+        "identity_rule": { "$ref": "#/$defs/identity_rule" },
+        "fields": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": { "$ref": "#/$defs/field" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "fixture": "harbourline",
+  "period_1": {
+    "label": "2026-03-31",
+    "file": "crm/period-2026-03-31/companies.csv",
+    "company_count": 6
+  },
+  "period_2": {
+    "label": "2026-06-30",
+    "file": "crm/period-2026-06-30/companies.csv",
+    "company_count": 7
+  },
+  "changed_employee_counts": [
+    {
+      "record_id": "HL-001",
+      "from_employees": 12,
+      "to_employees": 14
+    },
+    {
+      "record_id": "HL-003",
+      "from_employees": 5,
+      "to_employees": 9
+    },
+    {
+      "record_id": "HL-004",
+      "from_employees": 20,
+      "to_employees": 18
+    }
+  ],
+  "new_companies": [
+    {
+      "record_id": "HL-007",
+      "company_name": "Harbour Freight Labs"
+    }
+  ],
+  "absent_companies": [
+    {
+      "record_id": "HL-006",
+      "company_name": "Granite Ledger"
+    }
+  ],
+  "unmatched_name_collisions": [
+    {
+      "record_id": "HL-008",
+      "company_name": "Tidewater Robotics",
+      "matches_existing_record_id": "HL-001",
+      "resolution": "unmatched",
+      "reason": "New identifier whose name matches an existing company; a name match never authorises a merge."
+    }
+  ],
+  "demographic_columns_added": [
+    "dg_women",
+    "dg_indigenous",
+    "dg_youth",
+    "dg_immigrants",
+    "dg_racialized",
+    "dg_2slgbtq",
+    "dg_persons_with_disabilities",
+    "dg_official_language_minority"
+  ],
+  "cost_of_support_present": false,
+  "notes": "Deltas are computed by tools/build_fixtures.py from the two CRM CSVs; tests re-derive them independently."
+}

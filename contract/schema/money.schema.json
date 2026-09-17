@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "money.schema.json",
+  "title": "Money value",
+  "description": "Every money amount in the impactOS data contract is an object carrying its own currency. A bare number is not a money value.",
+  "type": "object",
+  "required": ["amount", "currency"],
+  "additionalProperties": false,
+  "properties": {
+    "amount": {
+      "type": ["number", "null"],
+      "description": "Numeric amount. Null when the figure is unknown or undisclosed."
+    },
+    "currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$",
+      "description": "ISO 4217 three-letter code, e.g. CAD."
+    }
+  }
+}
